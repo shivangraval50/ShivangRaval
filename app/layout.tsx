@@ -27,3 +27,20 @@ export default function RootLayout({
     </html>
   )
 }
+
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className={inter.className}>
+        {children}
+        <GoogleAnalytics gaId="G-XY979VBLM5" />
+      </body>
+    </html>
+  )
+}
