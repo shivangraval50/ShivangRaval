@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, ChevronDown, Menu, X } from 'lucide-react';
 
-const Portfolio = () => {
+export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const projects = [
@@ -147,12 +147,12 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-blue-500">
-                 <img
-                  src="/images/logo1.jpeg"
-                  alt="Shivang Raval"
-                  className="w-full h-full object-cover"
-                  />
-                </div>
+              <img
+                src="/images/logo1.jpeg"
+                alt="Shivang Raval"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
@@ -185,7 +185,7 @@ const Portfolio = () => {
               href="/Shivang_Raval_ML_Engineer_JaneStreet.pdf"
               download
               className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 hover:text-blue-600 transition font-medium"
-              >
+            >
               Download Resume
             </a>
           </div>
@@ -229,7 +229,7 @@ const Portfolio = () => {
 
           <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
             <p>
-              I'm a <strong>Quant Trader and AI Engineer</strong> currently pursuing my Master's in Computer Science
+              I&apos;m a <strong>Quant Trader and AI Engineer</strong> currently pursuing my Master&apos;s in Computer Science
               at Northeastern University (4.0 GPA), specializing in quantitative finance and production machine learning systems.
             </p>
 
@@ -242,14 +242,14 @@ const Portfolio = () => {
             <p>
               On the <strong>ML & MLOps</strong> side, I architect production systems that scale — recently leading a
               team of 20 engineers at Webearl AI, where we built inference platforms serving 100K+ daily requests with
-              sub-500ms latency. I've reduced training times from 8 hours to 45 minutes through distributed GPU acceleration
+              sub-500ms latency. I&apos;ve reduced training times from 8 hours to 45 minutes through distributed GPU acceleration
               and built RAG systems with sub-10ms cached response times.
             </p>
 
             <p>
               My tech stack spans the full spectrum: <strong>Python and C++</strong> for core systems, <strong>PyTorch</strong> for
               ML modeling, <strong>LangChain</strong> for LLM applications, and <strong>Kubernetes</strong> for orchestration.
-              I'm passionate about the intersection where quantitative rigor meets engineering excellence.
+              I&apos;m passionate about the intersection where quantitative rigor meets engineering excellence.
             </p>
           </div>
         </div>
@@ -378,11 +378,11 @@ const Portfolio = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Let's Build Something</h2>
+          <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Something</h2>
 
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Whether you're looking for quantitative trading expertise, ML engineering,
-            or technical leadership — I'd love to hear from you.
+            Whether you&apos;re looking for quantitative trading expertise, ML engineering,
+            or technical leadership — I&apos;d love to hear from you.
           </p>
 
           <div className="space-y-4 mb-8">
@@ -394,13 +394,13 @@ const Portfolio = () => {
             </div>
             <div className="flex items-center justify-center space-x-3">
               <Linkedin className="text-blue-400" />
-              <a href="https://linkedin.com/in/shivang-raval" className="text-blue-400 hover:text-blue-300 transition">
+              <a href="https://linkedin.com/in/shivang-raval" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition">
                 linkedin.com/in/shivang-raval
               </a>
             </div>
             <div className="flex items-center justify-center space-x-3">
               <Github className="text-blue-400" />
-              <a href="https://github.com/shivangraval50" className="text-blue-400 hover:text-blue-300 transition">
+              <a href="https://github.com/shivangraval50" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition">
                 github.com/shivangraval50
               </a>
             </div>
@@ -423,6 +423,4 @@ const Portfolio = () => {
       </section>
     </div>
   );
-};
-
-export default Portfolio;
+}
