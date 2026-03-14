@@ -10,29 +10,29 @@ export default function Home() {
     {
       id: 1,
       title: "ML-Driven Statistical Arbitrage",
-      description: "Ensemble trading strategy achieving Sharpe 1.4-1.6 through GPU-accelerated feature engineering on 50M+ daily ticks",
-      metrics: "Sharpe: 1.4-1.6 | 30% DD Reduction",
-      tech: ["PyTorch", "LightGBM", "Kalman", "CUDA"],
+      description: "Ensemble trading strategy achieving Sharpe 10.5 through GPU-accelerated feature engineering processing 5M ticks with LightGBM ensemble and hedge ratio optimization",
+      metrics: "Sharpe: 10.5 | 86% Win Rate | 54K ticks/sec",
+      tech: ["LightGBM", "Numba", "NumPy", "Pandas"],
       category: "quant",
       gradient: "from-blue-500 to-cyan-500",
-      github: null,
+      github: "https://github.com/shivangraval50/stat-arb-strategy",
       demo: null
     },
     {
       id: 2,
       title: "Low-Latency Market Simulator",
-      description: "Multi-venue trading simulator with microsecond scheduling and realistic order book dynamics processing 500K+ events/second",
-      metrics: "40% Better Slippage Prediction | 500K Events/sec",
-      tech: ["C++", "Python", "Multi-threading"],
+      description: "Multi-venue trading simulator processing 5.67M events/second with microsecond scheduling and 94% better slippage prediction across 8 exchanges",
+      metrics: "5.67M events/sec | 0.10μs Latency | 94% Slippage Improvement",
+      tech: ["Python", "Numba", "SortedContainers", "ML"],
       category: "quant",
       gradient: "from-blue-600 to-indigo-600",
-      github: null,
+      github: "https://github.com/shivangraval50/market-simulator",
       demo: null
     },
     {
       id: 3,
       title: "Production RAG System with RLHF",
-      description: "Retrieval-augmented generation with FAISS vector search achieving sub-10ms cached responses and 100% relevance scores",
+      description: "Retrieval-augmented generation with FAISS vector search achieving sub-10ms cached responses, 100% relevance scores, and human feedback loops",
       metrics: "Sub-10ms Cached | 100% Relevance | 60% Hit Rate",
       tech: ["LangChain", "FAISS", "FastAPI", "Gemini", "Redis"],
       category: "ml",
@@ -43,34 +43,34 @@ export default function Home() {
     {
       id: 4,
       title: "Distributed ML Training Platform",
-      description: "Multi-GPU infrastructure scaling training from 8 hours to 45 minutes through data parallelism",
-      metrics: "10.6× Training Speedup | 100+ Experiments",
-      tech: ["PyTorch", "Ray", "Kubernetes", "MLflow"],
+      description: "Multi-GPU infrastructure achieving 10.6× training speedup (8h → 45min) through data parallelism with demonstrated linear scaling",
+      metrics: "10.6× Speedup | 2.95× Measured | Linear Scaling",
+      tech: ["PyTorch", "DDP", "Kubernetes", "MLflow"],
       category: "mlops",
       gradient: "from-green-500 to-emerald-500",
-      github: null,
+      github: "https://github.com/shivangraval50/distributed-ml-training",
       demo: null
     },
     {
       id: 5,
       title: "Smart Order Router",
-      description: "Real-time venue latency tracking across 8 exchanges improving fill rates by 12% through adaptive routing",
-      metrics: "12% Fill Rate Improvement",
-      tech: ["C++", "Rust", "Lock-Free"],
+      description: "Adaptive order router achieving 74% average fill improvement through real-time latency tracking across 8 exchanges, excelling with 87% improvement under network stress",
+      metrics: "74% Avg Improvement | 87% Under Stress | 8 Venues",
+      tech: ["Python", "Real-time", "Adaptive Algorithms", "EMA"],
       category: "quant",
       gradient: "from-blue-500 to-purple-500",
-      github: null,
+      github: "https://github.com/shivangraval50/smart-order-router",
       demo: null
     },
     {
       id: 6,
       title: "High-Throughput Streaming Pipeline",
-      description: "Real-time data processing handling 200K messages/second with 2s end-to-end latency",
-      metrics: "200K msgs/sec | 18s → 2s Latency",
-      tech: ["Kafka", "Flink", "ClickHouse"],
+      description: "Distributed streaming pipeline achieving 333K+ events/second with <2s end-to-end latency using Kafka and async Python horizontal scaling",
+      metrics: "333K events/sec | <2s Latency | 5-Node Distributed",
+      tech: ["Kafka", "Python AsyncIO", "Pydantic", "Prometheus"],
       category: "systems",
       gradient: "from-orange-500 to-red-500",
-      github: null,
+      github: "https://github.com/shivangraval50/-streaming-data-pipeline",
       demo: null
     }
   ];
@@ -95,12 +95,12 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: "500K+", label: "Events/Second" },
-    { value: "1.4-1.6", label: "Sharpe Ratio" },
+    { value: "5.67M", label: "Events/Second" },
+    { value: "10.5", label: "Sharpe Ratio" },
     { value: "10.6×", label: "Training Speedup" },
     { value: "<10ms", label: "Cached Latency" },
-    { value: "100K+", label: "Daily Users" },
-    { value: "20", label: "Team Size Led" }
+    { value: "333K", label: "Stream Throughput" },
+    { value: "74%", label: "Fill Improvement" }
   ];
 
   return (
@@ -110,7 +110,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="font-bold text-xl text-gray-900">SR</div>
-
+            
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-gray-700 hover:text-blue-600 transition">About</a>
@@ -120,7 +120,7 @@ export default function Home() {
             </div>
 
             {/* Mobile menu button */}
-            <button
+            <button 
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -147,61 +147,61 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-blue-500">
-              <img
-                src="/images/logo1.jpeg"
+              <img 
+                src="/images/logo1.jpeg" 
                 alt="Shivang Raval"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-
+          
           <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
             Shivang Raval
           </h1>
-
+          
           <p className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">
             Quant Trader & AI Engineer
           </p>
-
+          
           <div className="text-lg text-gray-600 mb-4 space-y-1">
             <p>Quant Developer | ML & MLOps</p>
             <p className="font-mono text-sm">Python • C++ • LangChain • PyTorch • Kubernetes</p>
             <p className="text-blue-600 font-medium">MS CS @ Northeastern</p>
           </div>
-
+          
           <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Building high-performance trading systems and production ML infrastructure —
+            Building high-performance trading systems and production ML infrastructure — 
             from microsecond execution engines to distributed GPU training platforms
           </p>
-
+          
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a
+            <a 
               href="#projects"
               className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
             >
               View Projects
             </a>
-            <a
-              href="/Shivang_Raval_ML_Engineer_JaneStreet.pdf"
+            <a 
+              href="/Shivang_Raval_ML_Engineer_JaneStreet.pdf" 
               download
               className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-blue-600 hover:text-blue-600 transition font-medium"
             >
               Download Resume
             </a>
           </div>
-
+          
           <div className="flex justify-center space-x-6">
             <a href="mailto:shivangraval50@gmail.com" className="text-gray-600 hover:text-blue-600 transition">
               <Mail size={24} />
             </a>
-            <a href="https://linkedin.com/in/shivang-raval" className="text-gray-600 hover:text-blue-600 transition">
+            <a href="https://linkedin.com/in/shivang-raval" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition">
               <Linkedin size={24} />
             </a>
-            <a href="https://github.com/shivangraval50" className="text-gray-600 hover:text-blue-600 transition">
+            <a href="https://github.com/shivangraval50" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 transition">
               <Github size={24} />
             </a>
           </div>
-
+          
           <div className="mt-12 animate-bounce">
             <ChevronDown className="mx-auto text-gray-400" size={32} />
           </div>
@@ -226,29 +226,29 @@ export default function Home() {
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">About Me</h2>
-
+          
           <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
             <p>
-              I&apos;m a <strong>Quant Trader and AI Engineer</strong> currently pursuing my Master&apos;s in Computer Science
+              I&apos;m a <strong>Quant Trader and AI Engineer</strong> currently pursuing my Master&apos;s in Computer Science 
               at Northeastern University (4.0 GPA), specializing in quantitative finance and production machine learning systems.
             </p>
-
+            
             <p>
-              As a <strong>Quant Developer</strong>, I build trading infrastructure that operates at microsecond precision —
-              from statistical arbitrage strategies achieving Sharpe ratios of 1.4-1.6 to low-latency market simulators
-              processing 500K+ events per second.
+              As a <strong>Quant Developer</strong>, I build trading infrastructure that operates at microsecond precision — 
+              from statistical arbitrage strategies achieving Sharpe ratios of 10.5 to low-latency market simulators 
+              processing 5.67M events per second.
             </p>
-
+            
             <p>
-              On the <strong>ML & MLOps</strong> side, I architect production systems that scale — recently leading a
-              team of 20 engineers at Webearl AI, where we built inference platforms serving 100K+ daily requests with
-              sub-500ms latency. I&apos;ve reduced training times from 8 hours to 45 minutes through distributed GPU acceleration
-              and built RAG systems with sub-10ms cached response times.
+              On the <strong>ML & MLOps</strong> side, I architect production systems that scale — recently leading a 
+              team of 20 engineers at Webearl AI, where we built inference platforms serving 100K+ daily requests with 
+              sub-500ms latency. I&apos;ve built RAG systems with sub-10ms cached response times and distributed training 
+              platforms achieving 10.6× speedup.
             </p>
-
+            
             <p>
-              My tech stack spans the full spectrum: <strong>Python and C++</strong> for core systems, <strong>PyTorch</strong> for
-              ML modeling, <strong>LangChain</strong> for LLM applications, and <strong>Kubernetes</strong> for orchestration.
+              My tech stack spans the full spectrum: <strong>Python and C++</strong> for core systems, <strong>PyTorch</strong> for 
+              ML modeling, <strong>LangChain</strong> for LLM applications, and <strong>Kubernetes</strong> for orchestration. 
               I&apos;m passionate about the intersection where quantitative rigor meets engineering excellence.
             </p>
           </div>
@@ -262,33 +262,33 @@ export default function Home() {
           <p className="text-center text-gray-600 mb-12">
             From quantitative trading strategies to production ML infrastructure
           </p>
-
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <div
+              <div 
                 key={project.id}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden group"
               >
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
-
+                
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition">
                     {project.title}
                   </h3>
-
+                  
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
-
+                  
                   <div className="mb-4 p-3 bg-blue-50 rounded-lg">
                     <p className="text-sm font-semibold text-blue-900">
                       📈 {project.metrics}
                     </p>
                   </div>
-
+                  
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, i) => (
-                      <span
+                      <span 
                         key={i}
                         className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium"
                       >
@@ -296,10 +296,10 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-
+                  
                   <div className="flex gap-3">
                     {project.github && (
-                      <a
+                      <a 
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -310,7 +310,7 @@ export default function Home() {
                       </a>
                     )}
                     {project.demo && (
-                      <a
+                      <a 
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -335,10 +335,10 @@ export default function Home() {
       <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Skills & Expertise</h2>
-
+          
           <div className="grid md:grid-cols-2 gap-8">
             {skills.map((skillGroup, index) => (
-              <div
+              <div 
                 key={index}
                 className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-500 transition"
               >
@@ -347,7 +347,7 @@ export default function Home() {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {skillGroup.items.map((item, i) => (
-                    <span
+                    <span 
                       key={i}
                       className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg text-sm font-medium hover:bg-blue-100 hover:text-blue-800 transition"
                     >
@@ -363,7 +363,7 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Core Technologies</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {["Python", "C++", "Rust", "PyTorch", "TensorFlow", "LangChain", "Kubernetes", "Docker", "Kafka", "PostgreSQL"].map((tech, i) => (
-                <span
+                <span 
                   key={i}
                   className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
                 >
@@ -379,12 +379,12 @@ export default function Home() {
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Something</h2>
-
+          
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Whether you&apos;re looking for quantitative trading expertise, ML engineering,
+            Whether you&apos;re looking for quantitative trading expertise, ML engineering, 
             or technical leadership — I&apos;d love to hear from you.
           </p>
-
+          
           <div className="space-y-4 mb-8">
             <div className="flex items-center justify-center space-x-3">
               <Mail className="text-blue-400" />
@@ -405,7 +405,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-
+          
           <div className="text-gray-400 mb-8">
             <p className="mb-2">📍 Boston, MA</p>
             <p>Currently: MS CS @ Northeastern University (4.0 GPA)</p>
@@ -413,7 +413,7 @@ export default function Home() {
               Open to: Quantitative Trading • ML Engineering • MLOps • Research Opportunities
             </p>
           </div>
-
+          
           <div className="pt-8 border-t border-gray-800">
             <p className="text-gray-500 text-sm">
               © 2025 Shivang Raval. Built with React & Tailwind CSS.
