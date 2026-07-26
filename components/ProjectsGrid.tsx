@@ -91,7 +91,7 @@ function FilterPill({
       onClick={onClick}
       className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-mono text-xs transition-colors ${
         active
-          ? "border-signal-cyan/50 bg-signal-cyan/10 text-signal-cyan"
+          ? "border-brand-primary/50 bg-brand-primary/10 text-brand-primary"
           : "border-line-subtle text-ink-secondary hover:border-line-strong hover:text-ink-primary"
       }`}
     >

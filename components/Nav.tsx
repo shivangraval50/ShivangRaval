@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
+  { id: "credentials", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -49,7 +52,7 @@ export default function Nav() {
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#" className="font-mono text-lg font-semibold text-ink-primary">
-          SR<span className="text-signal-cyan animate-blink">_</span>
+          SR<span className="text-brand-primary animate-blink">_</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -72,19 +75,23 @@ export default function Nav() {
           <a
             href="/Shivang_Raval_Resume.pdf"
             download
-            className="ml-3 rounded-full border border-signal-cyan/40 px-4 py-1.5 font-mono text-sm text-signal-cyan transition-colors hover:bg-signal-cyan/10"
+            className="ml-3 rounded-full border border-brand-primary/40 px-4 py-1.5 font-mono text-sm text-brand-primary transition-colors hover:bg-brand-primary/10"
           >
             Resume
           </a>
+          <ThemeToggle className="ml-2" />
         </div>
 
-        <button
-          className="text-ink-primary md:hidden"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="text-ink-primary"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

@@ -50,7 +50,7 @@ function FeaturedCard({ project }: { project: Project }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm text-ink-primary transition-colors hover:border-signal-cyan/50 hover:text-signal-cyan"
+            className="flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm text-ink-primary transition-colors hover:border-brand-primary/50 hover:text-brand-primary"
           >
             <Github size={16} /> Code
           </a>
@@ -59,7 +59,7 @@ function FeaturedCard({ project }: { project: Project }) {
               href={project.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-signal-cyan px-4 py-2 text-sm font-medium text-void transition-opacity hover:opacity-90"
+              className="flex items-center gap-2 rounded-full bg-brand-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               <ExternalLink size={16} /> Live
             </a>

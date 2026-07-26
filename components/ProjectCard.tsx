@@ -34,7 +34,7 @@ export default function ProjectCard({ project, onOpenDemo }: Props) {
           {project.featured && <Sparkles size={14} className="shrink-0 text-signal-amber" />}
         </div>
 
-        <h3 className="mb-2 text-lg font-semibold text-ink-primary transition-colors group-hover:text-signal-cyan">
+        <h3 className="mb-2 text-lg font-semibold text-ink-primary transition-colors group-hover:text-brand-primary">
           {project.title}
         </h3>
         <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-secondary">{project.pitch}</p>
@@ -46,7 +46,7 @@ export default function ProjectCard({ project, onOpenDemo }: Props) {
                 key={m.label}
                 className="rounded-md bg-void-elevated px-2 py-1 font-mono text-xs text-ink-secondary"
               >
-                <span className="text-signal-cyan">{m.value}</span> {m.label}
+                <span className="text-brand-primary">{m.value}</span> {m.label}
               </span>
             ))}
           </div>
@@ -63,7 +63,7 @@ export default function ProjectCard({ project, onOpenDemo }: Props) {
         <div className="mt-auto flex items-center gap-4 border-t border-line-subtle pt-4">
           <button
             onClick={onOpenDemo}
-            className="flex items-center gap-1.5 font-mono text-sm font-medium text-signal-cyan transition-colors hover:text-white"
+            className="flex items-center gap-1.5 font-mono text-sm font-medium text-brand-primary transition-colors hover:text-ink-primary"
           >
             <Sparkles size={14} /> Try it live
           </button>

@@ -12,32 +12,36 @@ module.exports = {
     extend: {
       colors: {
         void: {
-          DEFAULT: "#05070a",
-          surface: "#0c1017",
-          elevated: "#121926",
-          card: "#0e131b",
+          DEFAULT: "hsl(var(--bg-base) / <alpha-value>)",
+          surface: "hsl(var(--bg-surface) / <alpha-value>)",
+          elevated: "hsl(var(--bg-elevated) / <alpha-value>)",
+          card: "hsl(var(--bg-card) / <alpha-value>)",
         },
         line: {
-          subtle: "#1a212c",
-          strong: "#2a3444",
+          subtle: "hsl(var(--line-subtle) / <alpha-value>)",
+          strong: "hsl(var(--line-strong) / <alpha-value>)",
         },
         ink: {
-          primary: "#eef2f6",
-          secondary: "#98a7b5",
-          tertiary: "#5c6b7a",
+          primary: "hsl(var(--fg-primary) / <alpha-value>)",
+          secondary: "hsl(var(--fg-secondary) / <alpha-value>)",
+          tertiary: "hsl(var(--fg-tertiary) / <alpha-value>)",
+        },
+        brand: {
+          primary: "hsl(var(--brand-primary) / <alpha-value>)",
+          accent: "hsl(var(--brand-accent) / <alpha-value>)",
         },
         signal: {
-          cyan: "#2dd4f0",
-          blue: "#3b82f6",
-          amber: "#f0b429",
-          orange: "#fb923c",
-          green: "#3ddc84",
-          emerald: "#10b981",
-          violet: "#a78bfa",
-          fuchsia: "#e879f9",
-          rose: "#fb7185",
-          pink: "#f472b6",
-          red: "#ff5d5d",
+          cyan: "hsl(var(--signal-cyan) / <alpha-value>)",
+          blue: "hsl(var(--signal-blue) / <alpha-value>)",
+          amber: "hsl(var(--signal-amber) / <alpha-value>)",
+          orange: "hsl(var(--signal-orange) / <alpha-value>)",
+          green: "hsl(var(--signal-green) / <alpha-value>)",
+          emerald: "hsl(var(--signal-emerald) / <alpha-value>)",
+          violet: "hsl(var(--signal-violet) / <alpha-value>)",
+          fuchsia: "hsl(var(--signal-fuchsia) / <alpha-value>)",
+          rose: "hsl(var(--signal-rose) / <alpha-value>)",
+          pink: "hsl(var(--signal-pink) / <alpha-value>)",
+          red: "hsl(var(--signal-red) / <alpha-value>)",
         },
       },
       fontFamily: {
@@ -46,7 +50,7 @@ module.exports = {
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(to bottom, transparent, rgba(5,7,10,0.6) 70%, #05070a 100%)",
+          "linear-gradient(to bottom, transparent, hsl(var(--bg-base) / 0.6) 70%, hsl(var(--bg-base)) 100%)",
       },
       animation: {
         blink: "blink 1.1s step-end infinite",

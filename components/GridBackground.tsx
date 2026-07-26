@@ -38,7 +38,7 @@ export default function GridBackground() {
               "--x": "50%",
               "--y": "30%",
               background:
-                "radial-gradient(600px circle at var(--x) var(--y), rgba(45,212,240,0.07), transparent 70%)",
+                "radial-gradient(600px circle at var(--x) var(--y), hsl(var(--brand-primary) / 0.07), transparent 70%)",
             } as React.CSSProperties
           }
         />

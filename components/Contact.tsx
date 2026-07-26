@@ -32,7 +32,7 @@ export default function Contact() {
         <motion.div variants={fadeUp} className="mb-10 flex flex-wrap justify-center gap-4">
           <MagneticButton
             href="mailto:shivangraval50@gmail.com"
-            className="flex items-center gap-2 rounded-full bg-signal-cyan px-8 py-3 font-medium text-void shadow-[0_0_30px_-8px_rgba(45,212,240,0.6)]"
+            className="flex items-center gap-2 rounded-full bg-brand-primary px-8 py-3 font-medium text-white shadow-[0_0_30px_-8px_hsl(var(--brand-primary)/0.6)]"
           >
             <Mail size={18} /> shivangraval50@gmail.com
           </MagneticButton>
@@ -43,7 +43,7 @@ export default function Contact() {
             href="https://linkedin.com/in/shivang-raval"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-signal-cyan"
+            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-brand-primary"
           >
             <Linkedin size={20} /> linkedin.com/in/shivang-raval
           </a>
@@ -51,7 +51,7 @@ export default function Contact() {
             href="https://github.com/shivangraval50"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-signal-cyan"
+            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-brand-primary"
           >
             <Github size={20} /> github.com/shivangraval50
           </a>

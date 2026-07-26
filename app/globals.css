@@ -2,17 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light theme */
+  --bg-base: 220 20% 96%;
+  --bg-surface: 220 25% 98%;
+  --bg-elevated: 220 20% 92%;
+  --bg-card: 220 25% 98%;
+  --fg-primary: 230 25% 15%;
+  --fg-secondary: 230 15% 40%;
+  --fg-tertiary: 230 12% 58%;
+  --line-subtle: 230 20% 87%;
+  --line-strong: 230 15% 74%;
+
+  --brand-primary: 250 85% 60%;
+  --brand-accent: 320 75% 55%;
+
+  --signal-cyan: 193 82% 31%;
+  --signal-blue: 221 83% 53%;
+  --signal-amber: 26 90% 37%;
+  --signal-orange: 17 88% 40%;
+  --signal-green: 142 72% 29%;
+  --signal-emerald: 163 94% 24%;
+  --signal-violet: 262 83% 58%;
+  --signal-fuchsia: 295 72% 40%;
+  --signal-rose: 345 83% 41%;
+  --signal-pink: 335 78% 42%;
+  --signal-red: 0 74% 42%;
+}
+
+.dark {
+  /* Dark theme — original tuned surface/ink preserved exactly */
+  --bg-base: 216 33% 3%;
+  --bg-surface: 218 31% 7%;
+  --bg-elevated: 219 36% 11%;
+  --bg-card: 217 32% 8%;
+  --fg-primary: 210 31% 95%;
+  --fg-secondary: 209 16% 65%;
+  --fg-tertiary: 210 14% 42%;
+  --line-subtle: 217 26% 14%;
+  --line-strong: 217 24% 22%;
+
+  --brand-primary: 220 90% 60%;
+  --brand-accent: 262 83% 65%;
+
+  --signal-cyan: 189 87% 56%;
+  --signal-blue: 217 91% 60%;
+  --signal-amber: 42 87% 55%;
+  --signal-orange: 27 96% 61%;
+  --signal-green: 147 69% 55%;
+  --signal-emerald: 160 84% 39%;
+  --signal-violet: 255 92% 76%;
+  --signal-fuchsia: 292 91% 73%;
+  --signal-rose: 351 95% 71%;
+  --signal-pink: 329 86% 70%;
+  --signal-red: 0 100% 68%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: rgba(45, 212, 240, 0.28);
-  color: #fff;
+  background: hsl(var(--brand-primary) / 0.3);
+  color: hsl(var(--fg-primary));
 }
 
 /* Scrollbar */
@@ -20,20 +77,20 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070a;
+  background: hsl(var(--bg-base));
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a212c;
+  background: hsl(var(--line-subtle));
   border-radius: 8px;
-  border: 2px solid #05070a;
+  border: 2px solid hsl(var(--bg-base));
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a3444;
+  background: hsl(var(--line-strong));
 }
 
-/* Focus visibility for keyboard nav — kept clear on a dark surface */
+/* Focus visibility for keyboard nav */
 :focus-visible {
-  outline: 2px solid #2dd4f0;
+  outline: 2px solid hsl(var(--brand-primary));
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -41,13 +98,13 @@ body {
 /* Static grid-paper backdrop used behind hero / section dividers */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(154, 167, 181, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(154, 167, 181, 0.07) 1px, transparent 1px);
+    linear-gradient(hsl(var(--fg-secondary) / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--fg-secondary) / 0.07) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, #eef2f6 30%, #98a7b5 100%);
+  background: linear-gradient(120deg, hsl(var(--fg-primary)) 30%, hsl(var(--fg-secondary)) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

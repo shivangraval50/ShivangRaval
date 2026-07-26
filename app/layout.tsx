@@ -23,8 +23,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${sans.variable} ${mono.variable} font-sans bg-void text-ink-primary antialiased selection:bg-signal-cyan/30 selection:text-white`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${sans.variable} ${mono.variable} font-sans bg-void text-ink-primary antialiased selection:bg-brand-primary/30 selection:text-ink-primary`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-primary focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-white focus:shadow-lg"
+        >
+          Skip to content
+        </a>
+        <p className="sr-only">
+          Portfolio of Shivang Raval, an AI/ML Engineer with a quantitative-trading specialization. Twenty real,
+          interactive engineering projects — including a working language interpreter, a price-time-priority
+          order-matching engine, and a retrieval-augmented chatbot — that you can run directly in the browser, not
+          just read about. Sections on this page: about, experience, skills, projects, education and
+          certifications, and contact.
+        </p>
         <MotionProvider>{children}</MotionProvider>
         <GoogleAnalytics gaId="G-XY979VBLM5" />
       </body>
