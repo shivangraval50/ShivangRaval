@@ -5,3 +5,65 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(45, 212, 240, 0.28);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a212c;
+  border-radius: 8px;
+  border: 2px solid #05070a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3444;
+}
+
+/* Focus visibility for keyboard nav — kept clear on a dark surface */
+:focus-visible {
+  outline: 2px solid #2dd4f0;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Static grid-paper backdrop used behind hero / section dividers */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(154, 167, 181, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154, 167, 181, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #eef2f6 30%, #98a7b5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
