@@ -8,9 +8,9 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Shivang Raval | Quant Trader & AI Engineer",
+  title: "Shivang Raval | AI/ML Engineer",
   description:
-    "MS CS @ Northeastern | Building high-performance trading systems and production ML infrastructure. 20 projects spanning quant trading, distributed ML, NLP, and systems programming.",
+    "MS CS @ Northeastern | AI/ML Engineer building production ML infrastructure and LLM systems, with deep quantitative trading systems experience. 20 projects spanning distributed training, LLM inference, NLP, quant trading, and systems programming.",
 };
 
 export const viewport: Viewport = {

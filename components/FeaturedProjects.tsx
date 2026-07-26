@@ -2,33 +2,42 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Sparkles } from "lucide-react";
 import type { Project } from "@/types/project";
 import { getCategory } from "@/data/categories";
-import DemoPanel from "./demos/DemoPanel";
+import { PLAYGROUNDS } from "./playgrounds/registry";
 import { EASE } from "@/lib/motion";
 
-function FeaturedCard({ project, index }: { project: Project; index: number }) {
+function FeaturedCard({ project }: { project: Project }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-120px" });
   const cat = getCategory(project.category);
-  const reversed = index % 2 === 1;
+  const Icon = cat.icon;
+  const Playground = PLAYGROUNDS[project.id];
 
   return (
-    <div ref={ref} className="grid items-center gap-10 lg:grid-cols-2">
+    <div
+      ref={ref}
+      className="group rounded-3xl border border-line-subtle bg-void-card/60 p-6 transition-colors hover:border-line-strong sm:p-8"
+    >
       <motion.div
-        initial={{ opacity: 0, x: reversed ? 40 : -40 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
+        initial={{ opacity: 0, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, ease: EASE }}
-        className={reversed ? "lg:order-2" : ""}
+        className="mb-6"
       >
-        <span
-          className={`mb-3 inline-block rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide ${cat.accentSoft} ${cat.accent}`}
-        >
-          {cat.label}
-        </span>
-        <h3 className="mb-3 text-3xl font-bold text-ink-primary">{project.title}</h3>
-        <p className="mb-5 leading-relaxed text-ink-secondary">{project.description}</p>
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-signal-amber/30 bg-signal-amber/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-signal-amber">
+            <Sparkles size={12} /> Featured
+          </span>
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide ${cat.accentSoft} ${cat.accent}`}
+          >
+            <Icon size={12} /> {cat.label}
+          </span>
+        </div>
+        <h3 className="mb-3 text-2xl font-bold text-ink-primary sm:text-3xl">{project.title}</h3>
+        <p className="mb-5 max-w-3xl leading-relaxed text-ink-secondary">{project.description}</p>
         <div className="mb-6 flex flex-wrap gap-2">
           {project.tech.map((t) => (
             <span key={t} className="rounded-full bg-void-elevated px-3 py-1 text-xs text-ink-tertiary">
@@ -59,12 +68,11 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, x: reversed ? -40 : 40 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
+        initial={{ opacity: 0, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, ease: EASE, delay: 0.12 }}
-        className={reversed ? "lg:order-1" : ""}
       >
-        {inView && <DemoPanel demo={project.demo} />}
+        {inView && Playground && <Playground />}
       </motion.div>
     </div>
   );
@@ -72,9 +80,9 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
 
 export default function FeaturedProjects({ projects }: { projects: Project[] }) {
   return (
-    <div className="space-y-24">
-      {projects.map((p, i) => (
-        <FeaturedCard key={p.id} project={p} index={i} />
+    <div className="space-y-10">
+      {projects.map((p) => (
+        <FeaturedCard key={p.id} project={p} />
       ))}
     </div>
   );

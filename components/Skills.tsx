@@ -5,16 +5,16 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 const SKILL_GROUPS = [
   {
-    category: "Quantitative Trading",
-    items: ["Statistical Arbitrage", "Market Microstructure", "Execution Algorithms", "Kalman Filters", "Backtesting"],
-  },
-  {
     category: "AI & ML Infrastructure",
     items: ["Distributed Training", "Model Serving", "MLOps", "RLHF", "Production ML"],
   },
   {
     category: "NLP & Applied ML",
     items: ["RAG Systems", "LLM Inference", "Semantic Search", "Entity Resolution", "Content Classification"],
+  },
+  {
+    category: "Quantitative Trading",
+    items: ["Statistical Arbitrage", "Market Microstructure", "Execution Algorithms", "Kalman Filters", "Backtesting"],
   },
   {
     category: "Systems & Languages",

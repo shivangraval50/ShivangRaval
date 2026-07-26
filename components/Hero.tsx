@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import { fadeUp, staggerContainer, EASE } from "@/lib/motion";
 
-const ROLES = ["Quant Trader", "AI/ML Engineer", "Systems Programmer", "MS CS @ Northeastern"];
+const ROLES = ["AI/ML Engineer", "Quant Researcher", "Systems Programmer", "MS CS @ Northeastern"];
 
 function RotatingRole() {
   const [i, setI] = useState(0);
@@ -15,7 +15,13 @@ function RotatingRole() {
     return () => clearInterval(t);
   }, []);
   return (
-    <span className="relative inline-block h-[1.4em] min-w-[15ch] overflow-hidden align-bottom">
+    <span className="relative inline-grid h-[1.4em] align-bottom">
+      {/* invisible stacked copies force the container to the width of the longest role */}
+      {ROLES.map((role) => (
+        <span key={role} className="invisible col-start-1 row-start-1 whitespace-nowrap">
+          {role}
+        </span>
+      ))}
       <AnimatePresence mode="wait">
         <motion.span
           key={ROLES[i]}
@@ -23,7 +29,7 @@ function RotatingRole() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -24, opacity: 0 }}
           transition={{ duration: 0.45, ease: EASE }}
-          className="absolute left-0 top-0 whitespace-nowrap text-signal-cyan"
+          className="col-start-1 row-start-1 whitespace-nowrap text-signal-cyan"
         >
           {ROLES[i]}
         </motion.span>
@@ -52,15 +58,35 @@ export default function Hero() {
           <span className="text-ink-tertiary">$</span> whoami
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 flex justify-center"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-signal-green/30 bg-signal-green/10 px-3 py-1 font-mono text-xs text-signal-green">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-green opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-signal-green" />
+            </span>
+            Open to AI/ML & quant engineering roles
+          </span>
+        </motion.div>
+
         <div className="mb-4 flex justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative h-28 w-28 rounded-full p-[2px]"
-            style={{ background: "conic-gradient(from 0deg, #2dd4f0, #a78bfa, #3ddc84, #2dd4f0)" }}
+            className="relative h-28 w-28 rounded-full"
           >
-            <div className="h-full w-full overflow-hidden rounded-full border-4 border-void bg-void">
+            <motion.div
+              className="absolute inset-0 rounded-full p-[2px]"
+              style={{ background: "conic-gradient(from 0deg, #2dd4f0, #a78bfa, #3ddc84, #2dd4f0)" }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            />
+            <div className="absolute inset-[2px] overflow-hidden rounded-full border-4 border-void bg-void">
               <img src="/images/logo1.jpeg" alt="Shivang Raval" className="h-full w-full object-cover" />
             </div>
           </motion.div>
@@ -91,23 +117,24 @@ export default function Hero() {
           </motion.p>
 
           <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-lg leading-relaxed text-ink-secondary">
-            Building high-performance trading systems and production ML infrastructure —
-            from microsecond execution engines to distributed training platforms.
+            Building production ML infrastructure and LLM systems — from distributed training
+            platforms to microsecond-precision quantitative trading engines.
           </motion.p>
 
           <motion.p variants={fadeUp} className="font-mono text-sm text-ink-tertiary">
-            Python · C++ · OCaml · PyTorch · LangChain · Kubernetes
+            Python · PyTorch · LangChain · Kubernetes · C++ · OCaml
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 pt-4">
             <MagneticButton
               href="#projects"
-              className="rounded-full bg-signal-cyan px-8 py-3 font-medium text-void shadow-[0_0_30px_-8px_rgba(45,212,240,0.6)] transition-shadow hover:shadow-[0_0_40px_-6px_rgba(45,212,240,0.8)]"
+              className="group relative overflow-hidden rounded-full bg-signal-cyan px-8 py-3 font-medium text-void shadow-[0_0_30px_-8px_rgba(45,212,240,0.6)] transition-shadow hover:shadow-[0_0_40px_-6px_rgba(45,212,240,0.8)]"
             >
-              View 20 Projects
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              <span className="relative">View 20 Projects</span>
             </MagneticButton>
             <MagneticButton
-              href="/Shivang_Raval_ML_Engineer_JaneStreet.pdf"
+              href="/Shivang_Raval_Resume.pdf"
               download
               className="rounded-full border border-line-strong px-8 py-3 font-medium text-ink-primary transition-colors hover:border-signal-cyan/50 hover:text-signal-cyan"
             >

@@ -32,6 +32,7 @@ export interface CategoryMeta {
   accent: string;
   accentSoft: string;
   gradient: string;
+  icon: import("lucide-react").LucideIcon;
 }
 
 export interface Project {

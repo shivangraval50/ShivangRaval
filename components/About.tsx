@@ -5,28 +5,28 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 const PARAGRAPHS = [
   <>
-    I&apos;m a <strong className="text-ink-primary">Quant Trader and AI Engineer</strong> currently pursuing my
-    Master&apos;s in Computer Science at Northeastern University (4.0 GPA), specializing in quantitative finance
-    and production machine learning systems.
+    I&apos;m an <strong className="text-ink-primary">AI/ML Engineer</strong> currently pursuing my Master&apos;s
+    in Computer Science at Northeastern University, with deep specialization in production machine learning
+    systems and quantitative finance.
   </>,
   <>
-    As a <strong className="text-ink-primary">Quant Developer</strong>, I build trading infrastructure that
-    operates at microsecond precision — from statistical arbitrage strategies to low-latency market simulators
-    processing millions of events per second.
+    On the <strong className="text-ink-primary">AI & ML Engineering</strong> side, I architect production
+    systems that scale — recently leading a team of 20 engineers at Webearl AI, where we built inference
+    platforms serving 100K+ daily requests with sub-500ms latency. I&apos;ve built RAG systems with sub-10ms
+    cached response times and distributed training infrastructure with real, measured parallel-processing
+    speedups — multi-GPU scaling is the work in progress.
   </>,
   <>
-    On the <strong className="text-ink-primary">ML & MLOps</strong> side, I architect production systems that
-    scale — recently leading a team of 20 engineers at Webearl AI, where we built inference platforms serving
-    100K+ daily requests with sub-500ms latency. I&apos;ve built RAG systems with sub-10ms cached response times
-    and distributed training infrastructure with real, measured parallel-processing speedups — multi-GPU
-    scaling is the work in progress.
+    As a <strong className="text-ink-primary">Quant Developer</strong>, I bring that same production rigor to
+    trading infrastructure operating at microsecond precision — from statistical arbitrage strategies to
+    low-latency market simulators processing millions of events per second.
   </>,
   <>
-    My stack spans the full spectrum: <strong className="text-ink-primary">Python, C++, and OCaml</strong> for
-    core systems, <strong className="text-ink-primary">PyTorch</strong> for ML modeling,{" "}
-    <strong className="text-ink-primary">LangChain</strong> for LLM applications, and{" "}
-    <strong className="text-ink-primary">Kubernetes</strong> for orchestration. I&apos;m passionate about the
-    intersection where quantitative rigor meets engineering excellence.
+    My stack spans the full spectrum: <strong className="text-ink-primary">PyTorch</strong> for ML
+    modeling, <strong className="text-ink-primary">LangChain</strong> for LLM applications, and{" "}
+    <strong className="text-ink-primary">Kubernetes</strong> for orchestration, down to{" "}
+    <strong className="text-ink-primary">Python, C++, and OCaml</strong> for core systems. I&apos;m passionate
+    about the intersection where engineering rigor meets quantitative depth.
   </>,
 ];
 

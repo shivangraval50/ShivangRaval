@@ -1,19 +1,14 @@
+import { Cpu, MessageSquare, LineChart, Terminal, Layers } from "lucide-react";
 import type { CategoryMeta, ProjectCategory } from "@/types/project";
 
 export const CATEGORIES: CategoryMeta[] = [
-  {
-    id: "quant",
-    label: "Quant Trading",
-    accent: "text-signal-cyan",
-    accentSoft: "bg-signal-cyan/10 border-signal-cyan/30",
-    gradient: "from-signal-cyan to-signal-blue",
-  },
   {
     id: "ai-infra",
     label: "AI / ML Infra",
     accent: "text-signal-violet",
     accentSoft: "bg-signal-violet/10 border-signal-violet/30",
     gradient: "from-signal-violet to-signal-fuchsia",
+    icon: Cpu,
   },
   {
     id: "nlp",
@@ -21,6 +16,15 @@ export const CATEGORIES: CategoryMeta[] = [
     accent: "text-signal-amber",
     accentSoft: "bg-signal-amber/10 border-signal-amber/30",
     gradient: "from-signal-amber to-signal-orange",
+    icon: MessageSquare,
+  },
+  {
+    id: "quant",
+    label: "Quant Trading",
+    accent: "text-signal-cyan",
+    accentSoft: "bg-signal-cyan/10 border-signal-cyan/30",
+    gradient: "from-signal-cyan to-signal-blue",
+    icon: LineChart,
   },
   {
     id: "systems",
@@ -28,6 +32,7 @@ export const CATEGORIES: CategoryMeta[] = [
     accent: "text-signal-emerald",
     accentSoft: "bg-signal-emerald/10 border-signal-emerald/30",
     gradient: "from-signal-emerald to-signal-green",
+    icon: Terminal,
   },
   {
     id: "apps",
@@ -35,6 +40,7 @@ export const CATEGORIES: CategoryMeta[] = [
     accent: "text-signal-rose",
     accentSoft: "bg-signal-rose/10 border-signal-rose/30",
     gradient: "from-signal-rose to-signal-pink",
+    icon: Layers,
   },
 ];
 

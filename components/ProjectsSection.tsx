@@ -28,7 +28,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
           <h2 className="mb-4 text-4xl font-bold text-ink-primary sm:text-5xl">Featured Work</h2>
           <p className="mx-auto max-w-2xl text-ink-secondary">
             From quantitative trading systems to distributed ML infrastructure — 20 projects,
-            each with a real, interactive look under the hood.
+            each with a real, working playground you can test yourself, not just a screenshot.
           </p>
         </motion.div>
 
@@ -36,7 +36,14 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
 
         <div className="my-20 h-px bg-line-subtle" />
 
-        <ProjectsGrid projects={projects} onOpenDemo={setActive} />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6 }}
+        >
+          <ProjectsGrid projects={projects} onOpenDemo={setActive} />
+        </motion.div>
       </div>
 
       <DemoModal project={active} onClose={() => setActive(null)} />

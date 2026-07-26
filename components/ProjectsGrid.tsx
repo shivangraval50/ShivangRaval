@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LayoutGrid } from "lucide-react";
 import type { Project } from "@/types/project";
 import { CATEGORIES } from "@/data/categories";
 import ProjectCard from "./ProjectCard";
@@ -29,7 +30,13 @@ export default function ProjectsGrid({ projects, onOpenDemo }: Props) {
   return (
     <div>
       <div className="mb-10 flex flex-wrap justify-center gap-2">
-        <FilterPill active={filter === "all"} onClick={() => setFilter("all")} label="All" count={counts.all} />
+        <FilterPill
+          active={filter === "all"}
+          onClick={() => setFilter("all")}
+          label="All"
+          count={counts.all}
+          icon={LayoutGrid}
+        />
         {CATEGORIES.map((cat) => (
           <FilterPill
             key={cat.id}
@@ -37,6 +44,7 @@ export default function ProjectsGrid({ projects, onOpenDemo }: Props) {
             onClick={() => setFilter(cat.id)}
             label={cat.label}
             count={counts[cat.id]}
+            icon={cat.icon}
           />
         ))}
       </div>
@@ -70,22 +78,24 @@ function FilterPill({
   onClick,
   label,
   count,
+  icon: Icon,
 }: {
   active: boolean;
   onClick: () => void;
   label: string;
   count: number;
+  icon: import("lucide-react").LucideIcon;
 }) {
   return (
     <button
       onClick={onClick}
-      className={`rounded-full border px-4 py-2 font-mono text-xs transition-colors ${
+      className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-mono text-xs transition-colors ${
         active
           ? "border-signal-cyan/50 bg-signal-cyan/10 text-signal-cyan"
           : "border-line-subtle text-ink-secondary hover:border-line-strong hover:text-ink-primary"
       }`}
     >
-      {label} <span className="text-ink-tertiary">({count})</span>
+      <Icon size={12} /> {label} <span className="text-ink-tertiary">({count})</span>
     </button>
   );
 }

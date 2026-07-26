@@ -70,7 +70,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="/Shivang_Raval_ML_Engineer_JaneStreet.pdf"
+            href="/Shivang_Raval_Resume.pdf"
             download
             className="ml-3 rounded-full border border-signal-cyan/40 px-4 py-1.5 font-mono text-sm text-signal-cyan transition-colors hover:bg-signal-cyan/10"
           >

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, ExternalLink } from "lucide-react";
 import type { Project } from "@/types/project";
 import { getCategory } from "@/data/categories";
-import DemoPanel from "./demos/DemoPanel";
+import { PLAYGROUNDS } from "./playgrounds/registry";
 import { EASE } from "@/lib/motion";
 
 export default function DemoModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
@@ -35,7 +35,7 @@ export default function DemoModal({ project, onClose }: { project: Project | nul
             <motion.div
               layoutId={`card-${project.id}`}
               transition={{ duration: 0.4, ease: EASE }}
-              className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-line-strong bg-void-card shadow-2xl"
+              className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-line-strong bg-void-card shadow-2xl"
             >
               <div className={`h-1 w-full bg-gradient-to-r ${getCategory(project.category).gradient}`} />
               <div className="p-6 sm:p-8">
@@ -59,7 +59,10 @@ export default function DemoModal({ project, onClose }: { project: Project | nul
 
                 <p className="mb-6 leading-relaxed text-ink-secondary">{project.description}</p>
 
-                <DemoPanel demo={project.demo} />
+                {(() => {
+                  const Playground = PLAYGROUNDS[project.id];
+                  return Playground ? <Playground /> : null;
+                })()}
 
                 {project.accuracyNote && (
                   <p className="mt-4 font-mono text-xs leading-relaxed text-ink-tertiary">

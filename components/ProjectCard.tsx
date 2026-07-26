@@ -13,19 +13,23 @@ interface Props {
 export default function ProjectCard({ project, onOpenDemo }: Props) {
   const cat = getCategory(project.category);
 
+  const Icon = cat.icon;
+
   return (
     <motion.div
       layoutId={`card-${project.id}`}
       layout
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line-subtle bg-void-card transition-colors hover:border-line-strong"
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 300, damping: 24 }}
+      className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-line-subtle bg-void-card shadow-lg shadow-black/20 transition-colors hover:border-line-strong hover:shadow-2xl`}
     >
       <div className={`h-1 w-full bg-gradient-to-r ${cat.gradient}`} />
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex items-center justify-between gap-2">
           <span
-            className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wide ${cat.accentSoft} ${cat.accent}`}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wide ${cat.accentSoft} ${cat.accent}`}
           >
-            {cat.label}
+            <Icon size={11} /> {cat.label}
           </span>
           {project.featured && <Sparkles size={14} className="shrink-0 text-signal-amber" />}
         </div>
@@ -61,7 +65,7 @@ export default function ProjectCard({ project, onOpenDemo }: Props) {
             onClick={onOpenDemo}
             className="flex items-center gap-1.5 font-mono text-sm font-medium text-signal-cyan transition-colors hover:text-white"
           >
-            <Sparkles size={14} /> Demo
+            <Sparkles size={14} /> Try it live
           </button>
           <a
             href={project.github}

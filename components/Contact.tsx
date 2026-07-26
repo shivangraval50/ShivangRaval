@@ -61,9 +61,9 @@ export default function Contact() {
           <p className="flex items-center justify-center gap-2">
             <MapPin size={14} /> Boston, MA
           </p>
-          <p>Currently: MS CS @ Northeastern University (4.0 GPA)</p>
+          <p>Currently: MS CS @ Northeastern University</p>
           <p className="pt-2 text-ink-secondary">
-            Open to: Quantitative Trading · ML Engineering · MLOps · Research Opportunities
+            Open to: ML Engineering · AI Research · MLOps · Quantitative Trading
           </p>
         </motion.div>
       </motion.div>
