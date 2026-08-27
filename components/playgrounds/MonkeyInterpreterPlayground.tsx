@@ -79,14 +79,14 @@ export default function MonkeyInterpreterPlayground() {
             >
               {result.ok ? (
                 <>
-                  <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+                  <div className="mb-1 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                     ⇒ evaluated to
                   </div>
                   <div className="break-all font-mono text-lg font-semibold text-signal-green">{result.output}</div>
                 </>
               ) : (
                 <>
-                  <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">⇒ error</div>
+                  <div className="mb-1 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">⇒ error</div>
                   <div className="break-all font-mono text-sm leading-relaxed text-signal-red">{result.error}</div>
                 </>
               )}

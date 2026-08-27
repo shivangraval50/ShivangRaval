@@ -141,7 +141,7 @@ export default function SmartOrderRouterPlayground() {
               { label: "Cost-sensitive", onClick: () => applyScenario(SCENARIOS.costSensitive) },
             ]}
           />
-          <p className="font-mono text-[11px] leading-relaxed text-ink-tertiary">
+          <p className="font-mono text-[0.6471rem] leading-relaxed text-ink-tertiary">
             score = urgency×latencyScore + urgency×fillRateEstimate + (1−urgency)×feeScore + liquidityScore — each
             factor min-max normalized across these 8 venues, recomputed on every change above.
           </p>

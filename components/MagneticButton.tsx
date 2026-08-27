@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface MagneticButtonProps {
   href: string;
@@ -12,36 +11,28 @@ interface MagneticButtonProps {
   rel?: string;
 }
 
+/**
+ * Primary call-to-action link.
+ *
+ * Previously this tracked the cursor and drifted up to 30% of the pointer
+ * offset. HIG "Motion" ("avoid adding motion to UI interactions that occur
+ * frequently") and "Pointing devices" (a control should stay where the pointer
+ * expects it) both argue against a target that moves away as you aim at it.
+ * The name is kept so callers don't change; the feedback is now the system's
+ * own: a small scale on hover and a settle on press.
+ */
 export default function MagneticButton({ href, children, className, download, target, rel }: MagneticButtonProps) {
-  const ref = useRef<HTMLAnchorElement>(null);
   const prefersReduced = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 200, damping: 15, mass: 0.4 });
-  const sy = useSpring(y, { stiffness: 200, damping: 15, mass: 0.4 });
-
-  const handleMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (prefersReduced || !ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left - rect.width / 2) * 0.3);
-    y.set((e.clientY - rect.top - rect.height / 2) * 0.3);
-  };
-
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
 
   return (
     <motion.a
-      ref={ref}
       href={href}
       download={download}
       target={target}
       rel={rel}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      style={{ x: sx, y: sy }}
+      whileHover={prefersReduced ? undefined : { scale: 1.02 }}
+      whileTap={prefersReduced ? undefined : { scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 520, damping: 34, mass: 0.5 }}
       className={className}
     >
       {children}

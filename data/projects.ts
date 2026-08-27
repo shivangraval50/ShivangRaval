@@ -422,6 +422,34 @@ export const PROJECTS: Project[] = [
       "The raw load-test output (BENCHMARK_RESULTS.txt) shows a 5-instance run achieving the same combined 66,667 events/sec as a single instance — no realized scaling. The polished README's \"333,333 events/sec (5 instances)\" is 5× that number presented as a capacity projection, not the measured result of that test. Leading with the single-instance, measured number here.",
     github: "https://github.com/shivangraval50/-streaming-data-pipeline",
   },
+  {
+    id: "openbid",
+    title: "openbid",
+    pitch:
+      "A live multi-user auction where one Cloudflare Durable Object per room is the sole bid-ordering authority — concurrency serialised by construction, not by a lock.",
+    description:
+      "Many browsers bid on the same lot over WebSockets, and every bid is decided by exactly one Durable Object per room — single-threaded, with no await between reading state and committing, so the second of two simultaneous bids can't observe stale state. The rules are pure functions split into decide (validateBid returns a rejection or an event) and apply (reduce trusts it), which makes replay a plain fold over the log rather than a second copy of the rules.",
+    category: "systems",
+    tech: ["TypeScript", "Cloudflare Durable Objects", "Next.js 16", "Neon Postgres", "Zustand", "Playwright"],
+    metrics: [
+      { label: "Test Suite", value: "398 tests / 40 files", status: "measured" },
+      { label: "Deployment", value: "not deployed yet", status: "stubbed" },
+    ],
+    demo: {
+      kind: "metrics",
+      metrics: [
+        { label: "Vitest Suite", value: "398 tests / 40 files", status: "measured" },
+        { label: "Two-Browser Race Test", value: "3/3 Playwright passing", status: "measured" },
+        { label: "fast-check Properties", value: "8 on the auction rules", status: "measured" },
+        { label: "Live Deployment", value: "Cloudflare + Vercel", status: "measured" },
+      ],
+    },
+    accuracyNote:
+      "Deployed and reachable: the Durable Object Worker runs on Cloudflare, the App Router front end on Vercel, and the room page server-renders its snapshot through the Worker. Three things are deliberately not configured yet, and the app degrades rather than breaking: with no Neon database the leaderboard and replay read empty, with no GitHub OAuth app sign-in is unavailable (guests can still bid, which is the design), and with no Gemini key the bot commentary is silent. Every number here is from a local run: 398 tests across 40 files (vitest) and 3/3 Playwright end-to-end tests, both re-run here rather than taken on trust. On the headline claim, the repo hedges it correctly and so should this card: a Durable Object yields at every await, so \"single-threaded\" alone would guarantee nothing. The ordering property comes from one specific block — read state, validateBid, append, broadcast — containing no await at all, which is a property of that code, not of the platform. The playground here runs a hand port of the real packages/auction-core rules; the network, the DO's one-at-a-time delivery and the alarm clock are simulated in the browser.",
+    github: "https://github.com/shivangraval50/openbid",
+    homepage: "https://openbid-zeta.vercel.app",
+    featured: true,
+  },
 
   // ---------- Applied Apps ----------
   {

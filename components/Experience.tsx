@@ -42,58 +42,70 @@ const EXPERIENCE: ExperienceEntry[] = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="px-4 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+    <section id="experience" className="scroll-mt-20 border-t border-line-subtle bg-void-surface px-5 py-24 sm:px-8 sm:py-28 lg:px-10">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mb-14 text-center"
+          className="mb-12"
         >
-          <p className="mb-3 font-mono text-sm text-signal-green">
+          <p className="eyebrow mb-3">
             <span className="text-ink-tertiary">$</span> cat experience.log
           </p>
-          <h2 className="text-4xl font-bold text-ink-primary">Experience</h2>
+          <h2 className="text-[2rem] font-semibold tracking-title text-ink-primary sm:text-[2.5rem]">
+            Experience
+          </h2>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer(0.12)}
+        <motion.ol
+          variants={staggerContainer(0.06)}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="space-y-6"
+          className="max-w-[52rem] space-y-4"
         >
           {EXPERIENCE.map((job) => (
-            <motion.div
+            <motion.li
               key={job.role}
               variants={fadeUp}
-              className="rounded-2xl border border-line-subtle border-l-4 border-l-brand-primary bg-void-card p-6 transition-colors hover:border-brand-primary/30"
+              /* Content-layer card: opaque, hairline, soft shadow. The 4px neon
+                 left rule is gone — HIG "Color" asks for colour that carries
+                 meaning, and it carried none. */
+              className="rounded-card bg-void-card p-5 shadow-e1 ring-1 ring-inset ring-line-subtle sm:p-7"
             >
-              <div className="mb-4 flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-void-elevated text-brand-primary">
-                    <Briefcase size={18} />
+              <div className="mb-5 flex flex-wrap items-start justify-between gap-x-6 gap-y-1.5">
+                <div className="flex min-w-0 items-start gap-3.5">
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-brand-primary/[0.10] text-brand-primary"
+                  >
+                    <Briefcase size={17} strokeWidth={1.75} />
                   </span>
-                  <div>
-                    <h3 className="text-lg font-semibold leading-snug text-ink-primary">{job.role}</h3>
-                    <p className="text-sm text-ink-secondary">{job.org}</p>
+                  <div className="min-w-0">
+                    <h3 className="text-[1.0625rem] font-semibold leading-snug text-ink-primary sm:text-[1.1875rem]">
+                      {job.role}
+                    </h3>
+                    <p className="mt-0.5 text-[0.9375rem] text-ink-secondary">{job.org}</p>
                   </div>
                 </div>
-                <span className="whitespace-nowrap font-mono text-xs text-ink-tertiary">{job.period}</span>
+                <span className="whitespace-nowrap pt-1 font-mono text-[0.75rem] tabular-nums text-ink-tertiary">
+                  {job.period}
+                </span>
               </div>
 
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {job.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-2.5 text-sm leading-relaxed text-ink-secondary">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-tertiary" />
-                    <span>{bullet}</span>
+                  <li key={bullet} className="flex gap-3 text-[0.9375rem] leading-[1.55] text-ink-secondary">
+                    <span aria-hidden="true" className="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-ink-tertiary" />
+                    <span className="max-w-[44rem]">{bullet}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ol>
       </div>
     </section>
   );

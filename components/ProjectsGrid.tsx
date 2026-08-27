@@ -6,7 +6,7 @@ import { LayoutGrid } from "lucide-react";
 import type { Project } from "@/types/project";
 import { CATEGORIES } from "@/data/categories";
 import ProjectCard from "./ProjectCard";
-import { EASE } from "@/lib/motion";
+import { DUR, EASE } from "@/lib/motion";
 
 interface Props {
   projects: Project[];
@@ -29,7 +29,13 @@ export default function ProjectsGrid({ projects, onOpenDemo }: Props) {
 
   return (
     <div>
-      <div className="mb-10 flex flex-wrap justify-center gap-2">
+      {/* Segmented filter. Roles make the selection state audible as well as
+          visible — HIG "Accessibility": don't convey state with colour alone. */}
+      <div
+        role="tablist"
+        aria-label="Filter projects by domain"
+        className="mb-10 flex flex-wrap gap-2"
+      >
         <FilterPill
           active={filter === "all"}
           onClick={() => setFilter("all")}
@@ -49,16 +55,16 @@ export default function ProjectsGrid({ projects, onOpenDemo }: Props) {
         ))}
       </div>
 
-      <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <motion.div layout className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
             <motion.div
               key={project.id}
               layout
-              initial={{ opacity: 0, scale: 0.92 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.35, ease: EASE }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: DUR.short, ease: EASE }}
             >
               <ProjectCard project={project} onOpenDemo={() => onOpenDemo(project)} />
             </motion.div>
@@ -67,7 +73,7 @@ export default function ProjectsGrid({ projects, onOpenDemo }: Props) {
       </motion.div>
 
       {filtered.length === 0 && (
-        <p className="py-16 text-center font-mono text-sm text-ink-tertiary">No projects in this category yet.</p>
+        <p className="py-16 text-center text-[0.9375rem] text-ink-tertiary">No projects in this category yet.</p>
       )}
     </div>
   );
@@ -88,14 +94,18 @@ function FilterPill({
 }) {
   return (
     <button
+      type="button"
+      role="tab"
+      aria-selected={active}
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-mono text-xs transition-colors ${
+      className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3.5 text-[0.8125rem] font-medium transition-colors duration-200 ${
         active
-          ? "border-brand-primary/50 bg-brand-primary/10 text-brand-primary"
-          : "border-line-subtle text-ink-secondary hover:border-line-strong hover:text-ink-primary"
+          ? "bg-ink-primary text-void ring-1 ring-inset ring-ink-primary"
+          : "bg-void-card text-ink-secondary ring-1 ring-inset ring-line-subtle hover:text-ink-primary hover:ring-line-strong"
       }`}
     >
-      <Icon size={12} /> {label} <span className="text-ink-tertiary">({count})</span>
+      <Icon size={13} strokeWidth={1.75} aria-hidden="true" /> {label}{" "}
+      <span className={active ? "text-void/70" : "text-ink-tertiary"}>({count})</span>
     </button>
   );
 }

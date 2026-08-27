@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 
 function loading() {
   return (
-    <div className="animate-pulse rounded-xl border border-line-subtle bg-void-elevated p-10 text-center font-mono text-xs text-ink-tertiary">
+    <div className="rounded-control bg-void-surface p-10 text-center text-[0.8125rem] text-ink-tertiary ring-1 ring-inset ring-line-subtle motion-safe:animate-pulse">
       loading playground…
     </div>
   );
@@ -20,6 +20,7 @@ export const PLAYGROUNDS: Record<string, ComponentType> = {
   "monkey-ocaml": dynamic(() => import("./MonkeyInterpreterPlayground"), { loading, ssr: false }),
   "lowlatency-exec-core": dynamic(() => import("./LowLatencyExecPlayground"), { loading, ssr: false }),
   "streaming-data-pipeline": dynamic(() => import("./StreamingPipelinePlayground"), { loading, ssr: false }),
+  "openbid": dynamic(() => import("./OpenBidPlayground"), { loading, ssr: false }),
   "llm-inference-engine": dynamic(() => import("./LLMInferenceEnginePlayground"), { loading, ssr: false }),
   "distributed-training-lab": dynamic(() => import("./DistributedTrainingLabPlayground"), { loading, ssr: false }),
   "distributed-ml-training": dynamic(() => import("./DistributedMLTrainingPlayground"), { loading, ssr: false }),

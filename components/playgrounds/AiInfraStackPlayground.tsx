@@ -75,7 +75,7 @@ export default function AiInfraStackPlayground() {
               <button
                 type="button"
                 onClick={() => setExpanded(isOpen ? null : m.id)}
-                className="mt-3 self-start font-mono text-[11px] uppercase tracking-wide text-signal-cyan transition-colors hover:opacity-80"
+                className="mt-3 self-start font-mono text-[0.6471rem] uppercase tracking-wide text-signal-cyan transition-colors hover:opacity-80"
               >
                 {isOpen ? "Hide detail −" : "Module detail +"}
               </button>
@@ -96,7 +96,7 @@ export default function AiInfraStackPlayground() {
                       {m.tech.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full bg-void-card px-2 py-0.5 text-[10px] text-ink-tertiary"
+                          className="rounded-full bg-void-card px-2 py-0.5 text-[0.6471rem] text-ink-tertiary"
                         >
                           {t}
                         </span>
@@ -106,7 +106,7 @@ export default function AiInfraStackPlayground() {
                 )}
               </AnimatePresence>
 
-              <p className="mt-3 font-mono text-[11px] text-ink-tertiary">
+              <p className="mt-3 font-mono text-[0.6471rem] text-ink-tertiary">
                 Its full interactive demo lives in this module&apos;s own project card on this
                 page.
               </p>

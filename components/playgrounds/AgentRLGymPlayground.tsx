@@ -177,7 +177,7 @@ export default function AgentRLGymPlayground() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="font-mono text-[11px] uppercase tracking-wide text-signal-cyan"
+                  className="font-mono text-[0.6471rem] uppercase tracking-wide text-signal-cyan"
                 >
                   live
                 </motion.span>
@@ -199,7 +199,7 @@ export default function AgentRLGymPlayground() {
             />
             <div className="relative flex h-full items-end gap-[2px]">
               {bars.length === 0 ? (
-                <span className="font-mono text-[11px] text-ink-tertiary">
+                <span className="font-mono text-[0.6471rem] text-ink-tertiary">
                   no episodes yet — click Train to begin
                 </span>
               ) : (
@@ -213,7 +213,7 @@ export default function AgentRLGymPlayground() {
               )}
             </div>
           </div>
-          <p className="font-mono text-[11px] text-ink-tertiary">
+          <p className="font-mono text-[0.6471rem] text-ink-tertiary">
             dashed line = 50% random baseline · bars = bucketed accuracy across training so far
           </p>
 

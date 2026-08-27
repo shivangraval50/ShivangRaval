@@ -28,6 +28,8 @@ module.exports = {
         },
         brand: {
           primary: "hsl(var(--brand-primary) / <alpha-value>)",
+          fill: "hsl(var(--brand-fill) / <alpha-value>)",
+          onfill: "hsl(var(--brand-on-fill) / <alpha-value>)",
           accent: "hsl(var(--brand-accent) / <alpha-value>)",
         },
         signal: {
@@ -45,23 +47,35 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
-      backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to bottom, transparent, hsl(var(--bg-base) / 0.6) 70%, hsl(var(--bg-base)) 100%)",
+      // Apple's display type is tightly tracked; body copy slightly so.
+      letterSpacing: {
+        display: "-0.024em",
+        title: "-0.018em",
+        body: "-0.011em",
+        label: "0.01em",
+      },
+      borderRadius: {
+        // Apple's continuous-corner language: generous, consistent radii.
+        card: "1.125rem",
+        sheet: "1.375rem",
+        control: "0.75rem",
+      },
+      boxShadow: {
+        e1: "var(--shadow-1)",
+        e2: "var(--shadow-2)",
+        sheet: "var(--shadow-sheet)",
+      },
+      transitionTimingFunction: {
+        // The curve the system uses for sheets and most view transitions.
+        apple: "cubic-bezier(0.32, 0.72, 0, 1)",
       },
       animation: {
-        blink: "blink 1.1s step-end infinite",
-        marquee: "marquee 32s linear infinite",
-        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        marquee: "marquee 60s linear infinite",
       },
       keyframes: {
-        blink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
-        },
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },

@@ -23,9 +23,10 @@ export default function AnimatedCounter({ value, decimals = 0, prefix = "", suff
       if (ref.current) ref.current.textContent = `${prefix}${value.toFixed(decimals)}${suffix}`;
       return;
     }
+    // HIG "Motion": brevity. 1.8s of counting held the reader hostage.
     const controls = animate(motionValue, value, {
-      duration: 1.8,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.9,
+      ease: [0.32, 0.72, 0, 1],
       onUpdate(latest) {
         if (ref.current) ref.current.textContent = `${prefix}${latest.toFixed(decimals)}${suffix}`;
       },

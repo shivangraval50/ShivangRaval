@@ -81,11 +81,11 @@ export default function DistributedMLTrainingPlayground() {
                     />
                     {b.n === workers && <div className="absolute inset-0 rounded-sm ring-2 ring-signal-cyan" />}
                   </div>
-                  <span className="font-mono text-[9px] text-ink-tertiary">{b.n}</span>
+                  <span className="font-mono text-[0.6471rem] text-ink-tertiary">{b.n}</span>
                 </div>
               ))}
             </div>
-            <p className="font-mono text-[10px] leading-relaxed text-ink-tertiary">
+            <p className="font-mono text-[0.6471rem] leading-relaxed text-ink-tertiary">
               red = naive linear reference (n) · amber/green = calibrated model · green bar (n=4) = the one real
               measurement · cyan ring = your current slider position
             </p>
@@ -116,7 +116,7 @@ export default function DistributedMLTrainingPlayground() {
               </div>
 
               {workers === 12 && (
-                <p className="rounded-lg border border-signal-amber/30 bg-void p-3 font-mono text-[11px] leading-relaxed text-signal-amber">
+                <p className="rounded-lg border border-signal-amber/30 bg-void p-3 font-mono text-[0.6471rem] leading-relaxed text-signal-amber">
                   At 12 workers, this calibrated model projects {calibrated.toFixed(2)}×. The repo&apos;s own README
                   instead shows two disagreeing figures for 12 GPUs in the same document — 10.6× and 13.3× — neither
                   of which is derived from this (or any) calibration.

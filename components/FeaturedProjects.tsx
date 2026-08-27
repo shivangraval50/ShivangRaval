@@ -2,85 +2,89 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Github, ExternalLink, Sparkles } from "lucide-react";
+import { Github, ExternalLink, Star } from "lucide-react";
 import type { Project } from "@/types/project";
 import { getCategory } from "@/data/categories";
 import { PLAYGROUNDS } from "./playgrounds/registry";
-import { EASE } from "@/lib/motion";
+import { DUR, EASE } from "@/lib/motion";
 
 function FeaturedCard({ project }: { project: Project }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-120px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
   const cat = getCategory(project.category);
   const Icon = cat.icon;
   const Playground = PLAYGROUNDS[project.id];
 
   return (
-    <div
+    <article
       ref={ref}
-      className="group rounded-3xl border border-line-subtle bg-void-card/60 p-6 transition-colors hover:border-line-strong sm:p-8"
+      className="rounded-sheet bg-void-card p-6 shadow-e1 ring-1 ring-inset ring-line-subtle sm:p-9"
     >
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, ease: EASE }}
-        className="mb-6"
+        transition={{ duration: DUR.medium, ease: EASE }}
+        className="mb-8"
       >
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-signal-amber/30 bg-signal-amber/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-signal-amber">
-            <Sparkles size={12} /> Featured
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-signal-amber/[0.10] px-2.5 py-1 text-[0.6875rem] font-medium uppercase tracking-label text-signal-amber ring-1 ring-inset ring-signal-amber/20">
+            <Star size={11} strokeWidth={2} className="fill-current" aria-hidden="true" /> Featured
           </span>
           <span
-            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-wide ${cat.accentSoft} ${cat.accent}`}
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.6875rem] font-medium uppercase tracking-label ring-1 ring-inset ${cat.accentSoft} ${cat.accent}`}
           >
-            <Icon size={12} /> {cat.label}
+            <Icon size={11} strokeWidth={2} aria-hidden="true" /> {cat.label}
           </span>
         </div>
-        <h3 className="mb-3 text-2xl font-bold text-ink-primary sm:text-3xl">{project.title}</h3>
-        <p className="mb-5 max-w-3xl leading-relaxed text-ink-secondary">{project.description}</p>
-        <div className="mb-6 flex flex-wrap gap-2">
+        <h3 className="mb-3.5 text-[1.625rem] font-semibold tracking-title text-ink-primary sm:text-[2rem]">
+          {project.title}
+        </h3>
+        <p className="mb-6 max-w-[46rem] text-[1.0625rem] leading-[1.55] text-ink-secondary">
+          {project.description}
+        </p>
+        <ul className="mb-7 flex flex-wrap gap-2">
           {project.tech.map((t) => (
-            <span key={t} className="rounded-full bg-void-elevated px-3 py-1 text-xs text-ink-tertiary">
+            <li key={t} className="rounded-full bg-void-elevated px-2.5 py-1 text-[0.75rem] text-ink-secondary">
               {t}
-            </span>
+            </li>
           ))}
-        </div>
-        <div className="flex gap-4">
+        </ul>
+        <div className="flex flex-wrap gap-3">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm text-ink-primary transition-colors hover:border-brand-primary/50 hover:text-brand-primary"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] font-medium text-ink-primary ring-1 ring-inset ring-line-strong transition-colors duration-200 hover:bg-ink-primary/[0.05]"
           >
-            <Github size={16} /> Code
+            <Github size={16} strokeWidth={1.75} aria-hidden="true" /> Code
           </a>
           {project.homepage && (
             <a
               href={project.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-brand-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-fill px-5 text-[0.9375rem] font-medium text-brand-onfill transition-opacity duration-200 hover:opacity-90"
             >
-              <ExternalLink size={16} /> Live
+              <ExternalLink size={16} strokeWidth={1.75} aria-hidden="true" /> Live
             </a>
           )}
         </div>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, ease: EASE, delay: 0.12 }}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: DUR.medium, ease: EASE, delay: 0.08 }}
       >
         {inView && Playground && <Playground />}
       </motion.div>
-    </div>
+    </article>
   );
 }
 
 export default function FeaturedProjects({ projects }: { projects: Project[] }) {
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {projects.map((p) => (
         <FeaturedCard key={p.id} project={p} />
       ))}
