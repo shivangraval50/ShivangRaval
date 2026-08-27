@@ -15,30 +15,33 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="border-y border-line-subtle bg-void-surface/40 py-14">
-      <motion.div
-        variants={staggerContainer(0.08)}
+    <section className="border-b border-line-subtle bg-void-surface px-5 py-16 sm:px-8 lg:px-10">
+      <motion.dl
+        variants={staggerContainer(0.05)}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 sm:px-6 md:grid-cols-3 lg:grid-cols-6 lg:px-8"
+        className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-6"
       >
         {STATS.map((stat) => (
           <motion.div key={stat.label} variants={fadeUp} className="text-center">
-            <div className="text-3xl font-bold text-brand-primary sm:text-4xl">
+            {/* HIG "Charting data": the number is the message — give it the
+                weight and let the caption recede. Tabular figures so the
+                count-up doesn't reflow the row. */}
+            <dd className="text-[1.75rem] font-semibold tracking-title text-ink-primary sm:text-[2rem]">
               <AnimatedCounter
                 value={stat.value}
                 decimals={stat.decimals}
                 prefix={stat.prefix}
                 suffix={stat.suffix}
               />
-            </div>
-            <div className="mt-1 font-mono text-xs uppercase tracking-wider text-ink-tertiary">
+            </dd>
+            <dt className="mx-auto mt-1.5 max-w-[9rem] text-[0.8125rem] leading-snug text-ink-tertiary">
               {stat.label}
-            </div>
+            </dt>
           </motion.div>
         ))}
-      </motion.div>
+      </motion.dl>
     </section>
   );
 }

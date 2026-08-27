@@ -13,20 +13,22 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
   const featured = projects.filter((p) => p.featured);
 
   return (
-    <section id="projects" className="px-4 py-24 sm:px-6 lg:px-8">
+    <section id="projects" className="scroll-mt-20 border-t border-line-subtle bg-void-surface px-5 py-24 sm:px-8 sm:py-28 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mb-16 text-center"
+          className="mb-12 max-w-[42rem]"
         >
-          <p className="mb-3 font-mono text-sm text-signal-green">
+          <p className="eyebrow mb-3">
             <span className="text-ink-tertiary">$</span> ls ./projects --count=20
           </p>
-          <h2 className="mb-4 text-4xl font-bold text-ink-primary sm:text-5xl">Featured Work</h2>
-          <p className="mx-auto max-w-2xl text-ink-secondary">
+          <h2 className="mb-4 text-[2rem] font-semibold tracking-title text-ink-primary sm:text-[2.5rem]">
+            Featured Work
+          </h2>
+          <p className="text-[1.0625rem] leading-relaxed text-ink-secondary">
             From quantitative trading systems to distributed ML infrastructure — 20 projects,
             each with a real, working playground you can test yourself, not just a screenshot.
           </p>
@@ -36,12 +38,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
 
         <div className="my-20 h-px bg-line-subtle" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.6 }}
-        >
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewportOnce}>
           <ProjectsGrid projects={projects} onOpenDemo={setActive} />
         </motion.div>
       </div>

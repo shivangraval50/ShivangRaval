@@ -14,7 +14,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05070a",
+  // One value per appearance so the browser chrome matches the page in both.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0c0d" },
+  ],
 };
 
 export default function RootLayout({
@@ -24,10 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sans.variable} ${mono.variable} font-sans bg-void text-ink-primary antialiased selection:bg-brand-primary/30 selection:text-ink-primary`}>
+      <body className={`${sans.variable} ${mono.variable} font-sans bg-void text-ink-primary antialiased`}>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-primary focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-white focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] focus:rounded-full focus:bg-brand-fill focus:px-5 focus:py-2.5 focus:text-[0.9375rem] focus:font-medium focus:text-brand-onfill focus:shadow-e2"
         >
           Skip to content
         </a>

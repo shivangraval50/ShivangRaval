@@ -2,125 +2,211 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design tokens — Apple design language
+   Neutral, near-achromatic surfaces (HIG "Color": prefer restrained, semantic
+   colour); one blue accent for interactivity; muted system-colour derivatives
+   for the domain signals. Every foreground/background pair below was measured
+   with a WCAG contrast calculator, not eyeballed — see .restyle-report.md.
+   ───────────────────────────────────────────────────────────────────────────── */
+
 :root {
-  /* Light theme */
-  --bg-base: 220 20% 96%;
-  --bg-surface: 220 25% 98%;
-  --bg-elevated: 220 20% 92%;
-  --bg-card: 220 25% 98%;
-  --fg-primary: 230 25% 15%;
-  --fg-secondary: 230 15% 40%;
-  --fg-tertiary: 230 12% 58%;
-  --line-subtle: 230 20% 87%;
-  --line-strong: 230 15% 74%;
+  /* Light appearance ------------------------------------------------------- */
+  --bg-base: 0 0% 100%;        /* page                                   #ffffff */
+  --bg-surface: 240 13% 97%;   /* alternating section bands              #f6f6f8 */
+  --bg-elevated: 240 11% 92%;  /* inset chips / wells                    #e8e8ed */
+  --bg-card: 0 0% 100%;        /* content cards (opaque, hairline+shadow) #ffffff */
 
-  --brand-primary: 250 85% 60%;
-  --brand-accent: 320 75% 55%;
+  --fg-primary: 240 3% 12%;    /* 16.6:1 on base                         #1e1e20 */
+  --fg-secondary: 240 3% 40%;  /*  5.97:1 on base, 4.89:1 on elevated    #636369 */
+  --fg-tertiary: 240 3% 42%;   /*  5.55:1 on base, 4.54:1 on elevated    #6a6a70 */
 
-  --signal-cyan: 193 82% 31%;
-  --signal-blue: 221 83% 53%;
-  --signal-amber: 26 90% 37%;
-  --signal-orange: 17 88% 40%;
-  --signal-green: 142 72% 29%;
-  --signal-emerald: 163 94% 24%;
-  --signal-violet: 262 83% 58%;
-  --signal-fuchsia: 295 72% 40%;
-  --signal-rose: 345 83% 41%;
-  --signal-pink: 335 78% 42%;
-  --signal-red: 0 74% 42%;
+  --line-subtle: 240 8% 86%;
+  --line-strong: 240 7% 74%;
+
+  --brand-primary: 211 100% 40%; /* interactive tint / link  5.74:1  #0063cc */
+  --brand-fill: 211 100% 43%;    /* filled control bg, white text 5.14:1 */
+  --brand-on-fill: 0 0% 100%;
+  --brand-accent: 248 55% 46%;
+
+  /* Domain signals — darkened system-colour derivatives, all ≥4.5:1 on base */
+  --signal-cyan: 199 90% 30%;
+  --signal-blue: 218 85% 42%;
+  --signal-amber: 32 90% 30%;
+  --signal-orange: 20 85% 35%;
+  --signal-green: 145 63% 28%;
+  --signal-emerald: 160 70% 27%;
+  --signal-violet: 250 60% 45%;
+  --signal-fuchsia: 290 55% 40%;
+  --signal-rose: 344 70% 38%;
+  --signal-pink: 330 65% 38%;
+  --signal-red: 0 75% 40%;
+
+  /* Elevation — Apple shadows are wide, soft and very low-opacity.
+     In light mode they carry the layering; in dark mode borders do. */
+  --shadow-1: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 10px 28px -14px rgb(0 0 0 / 0.16);
+  --shadow-2: 0 2px 6px 0 rgb(0 0 0 / 0.07), 0 18px 44px -18px rgb(0 0 0 / 0.24);
+  --shadow-sheet: 0 28px 72px -16px rgb(0 0 0 / 0.30);
+
+  color-scheme: light;
 }
 
 .dark {
-  /* Dark theme — original tuned surface/ink preserved exactly */
-  --bg-base: 216 33% 3%;
-  --bg-surface: 218 31% 7%;
-  --bg-elevated: 219 36% 11%;
-  --bg-card: 217 32% 8%;
-  --fg-primary: 210 31% 95%;
-  --fg-secondary: 209 16% 65%;
-  --fg-tertiary: 210 14% 42%;
-  --line-subtle: 217 26% 14%;
-  --line-strong: 217 24% 22%;
+  /* Dark appearance — base/elevated pairs mirror the system's two-set model
+     (HIG "Dark Mode": base recedes, elevated advances). */
+  --bg-base: 240 3% 5%;        /* #0c0c0d */
+  --bg-surface: 240 3% 9%;     /* #161618 */
+  --bg-elevated: 240 3% 18%;   /* #2d2d2f */
+  --bg-card: 240 3% 12%;       /* #1e1e20 */
 
-  --brand-primary: 220 90% 60%;
-  --brand-accent: 262 83% 65%;
+  --fg-primary: 240 12% 96%;   /* 17.8:1 on base    #f4f4f6 */
+  --fg-secondary: 240 5% 68%;  /*  8.38:1 on base   #a9a9b1 */
+  --fg-tertiary: 240 4% 60%;   /*  6.58:1 on base   #95959d */
 
-  --signal-cyan: 189 87% 56%;
-  --signal-blue: 217 91% 60%;
-  --signal-amber: 42 87% 55%;
-  --signal-orange: 27 96% 61%;
-  --signal-green: 147 69% 55%;
-  --signal-emerald: 160 84% 39%;
-  --signal-violet: 255 92% 76%;
-  --signal-fuchsia: 292 91% 73%;
-  --signal-rose: 351 95% 71%;
-  --signal-pink: 329 86% 70%;
-  --signal-red: 0 100% 68%;
+  --line-subtle: 240 4% 18%;
+  --line-strong: 240 4% 30%;
+
+  --brand-primary: 210 100% 64%; /* 7.40:1 on base  #47a3ff */
+  --brand-fill: 211 100% 44%;    /* white text 4.97:1 */
+  --brand-on-fill: 0 0% 100%;
+  --brand-accent: 252 90% 78%;
+
+  --signal-cyan: 196 85% 62%;
+  --signal-blue: 214 95% 66%;
+  --signal-amber: 40 90% 62%;
+  --signal-orange: 26 92% 62%;
+  --signal-green: 142 65% 55%;
+  --signal-emerald: 158 70% 52%;
+  --signal-violet: 252 90% 76%;
+  --signal-fuchsia: 292 80% 72%;
+  --signal-rose: 350 90% 68%;
+  --signal-pink: 328 82% 70%;
+  --signal-red: 2 95% 68%;
+
+  --shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.4), 0 12px 32px -18px rgb(0 0 0 / 0.7);
+  --shadow-2: 0 1px 2px 0 rgb(0 0 0 / 0.5), 0 20px 48px -24px rgb(0 0 0 / 0.8);
+  --shadow-sheet: 0 32px 80px -20px rgb(0 0 0 / 0.85);
+
+  color-scheme: dark;
 }
 
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
 html {
+  /* HIG "Typography": 17 pt is the default body size on mobile and the size
+     Apple's own marketing type scale is built on. Shifting the root shifts the
+     whole rem-based Tailwind scale — type *and* spacing — in one move. */
+  font-size: 106.25%;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: -0.011em;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Apple tightens tracking as display type grows. */
+h1,
+h2 {
+  letter-spacing: -0.021em;
+}
+h3,
+h4 {
+  letter-spacing: -0.016em;
 }
 
 ::selection {
-  background: hsl(var(--brand-primary) / 0.3);
+  background: hsl(var(--brand-primary) / 0.22);
   color: hsl(var(--fg-primary));
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(var(--bg-base));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--line-subtle));
-  border-radius: 8px;
-  border: 2px solid hsl(var(--bg-base));
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--line-strong));
-}
-
-/* Focus visibility for keyboard nav */
+/* ── Focus ────────────────────────────────────────────────────────────────── */
+/* HIG "Focus and selection": every interactive element must be reachable and
+   must show an unmistakable focus indicator. One rule, applied globally, so no
+   control can silently opt out. */
 :focus-visible {
   outline: 2px solid hsl(var(--brand-primary));
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 6px;
+}
+/* Elements that carry their own radius keep it under the ring. */
+.rounded-full:focus-visible {
+  border-radius: 9999px;
 }
 
-/* Static grid-paper backdrop used behind hero / section dividers */
-.bg-grid {
-  background-image:
-    linear-gradient(hsl(var(--fg-secondary) / 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--fg-secondary) / 0.07) 1px, transparent 1px);
-  background-size: 44px 44px;
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--fg-primary) / 0.18);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--fg-primary) / 0.32);
+  background-clip: content-box;
 }
 
-.text-gradient {
-  background: linear-gradient(120deg, hsl(var(--fg-primary)) 30%, hsl(var(--fg-secondary)) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* ── Utilities ────────────────────────────────────────────────────────────── */
+
+/* Section eyebrow: the small monospace command strings above each heading.
+   Kept verbatim as copy, demoted visually to a quiet label. */
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7647rem; /* 13px — HIG footnote */
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: hsl(var(--fg-tertiary));
+}
+
+/* The one translucent material on the site: the top bar.
+   HIG "Materials" / Liquid Glass — a functional layer floating over content. */
+.material-bar {
+  background: hsl(var(--bg-base) / 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .material-bar {
+    background: hsl(var(--bg-base) / 0.96);
+  }
 }
 
 .font-tabular {
   font-variant-numeric: tabular-nums;
 }
 
+/* Hairline rule at true device-pixel weight where the display allows it. */
+.hairline {
+  border-color: hsl(var(--line-subtle));
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+/* HIG "Accessibility": when Reduce Motion is on, drop repeating/peripheral
+   animation entirely rather than merely shortening it, and swap movement for
+   opacity. framer-motion is handled separately via MotionConfig reducedMotion. */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
   }
 }

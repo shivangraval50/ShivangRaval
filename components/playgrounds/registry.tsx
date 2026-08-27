@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 
 function loading() {
   return (
-    <div className="animate-pulse rounded-xl border border-line-subtle bg-void-elevated p-10 text-center font-mono text-xs text-ink-tertiary">
+    <div className="rounded-control bg-void-surface p-10 text-center text-[0.8125rem] text-ink-tertiary ring-1 ring-inset ring-line-subtle motion-safe:animate-pulse">
       loading playground…
     </div>
   );

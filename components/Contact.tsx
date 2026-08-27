@@ -7,59 +7,70 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-line-subtle px-4 py-24 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30 [mask-image:radial-gradient(ellipse_60%_80%_at_50%_50%,black_30%,transparent_100%)]" />
-
+    <section
+      id="contact"
+      className="scroll-mt-20 border-t border-line-subtle bg-void-surface px-5 py-24 sm:px-8 sm:py-32 lg:px-10"
+    >
       <motion.div
-        variants={staggerContainer(0.12)}
+        variants={staggerContainer(0.06)}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="relative mx-auto max-w-3xl text-center"
+        className="mx-auto max-w-[38rem] text-center"
       >
-        <motion.p variants={fadeUp} className="mb-3 font-mono text-sm text-signal-green">
+        <motion.p variants={fadeUp} className="eyebrow mb-3">
           <span className="text-ink-tertiary">$</span> ./contact --reach-out
         </motion.p>
-        <motion.h2 variants={fadeUp} className="mb-6 text-4xl font-bold text-ink-primary sm:text-5xl">
+        <motion.h2
+          variants={fadeUp}
+          className="mb-5 text-[2.25rem] font-semibold tracking-display text-ink-primary sm:text-[3rem]"
+        >
           Let&apos;s Build Something
         </motion.h2>
 
-        <motion.p variants={fadeUp} className="mb-10 text-xl leading-relaxed text-ink-secondary">
+        <motion.p
+          variants={fadeUp}
+          className="mb-10 text-[1.125rem] leading-[1.5] text-ink-secondary sm:text-[1.25rem]"
+        >
           Whether you&apos;re looking for quantitative trading expertise, ML engineering, or technical
           leadership — I&apos;d love to hear from you.
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mb-10 flex flex-wrap justify-center gap-4">
+        <motion.div variants={fadeUp} className="mb-10 flex justify-center">
           <MagneticButton
             href="mailto:shivangraval50@gmail.com"
-            className="flex items-center gap-2 rounded-full bg-brand-primary px-8 py-3 font-medium text-white shadow-[0_0_30px_-8px_hsl(var(--brand-primary)/0.6)]"
+            className="inline-flex min-h-11 max-w-full items-center gap-2.5 rounded-full bg-brand-fill px-6 text-[1rem] font-medium text-brand-onfill transition-opacity duration-200 hover:opacity-90 sm:text-[1.0625rem]"
           >
-            <Mail size={18} /> shivangraval50@gmail.com
+            <Mail size={18} strokeWidth={1.75} aria-hidden="true" />
+            <span className="truncate">shivangraval50@gmail.com</span>
           </MagneticButton>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mb-10 flex justify-center gap-6">
+        <motion.div
+          variants={fadeUp}
+          className="mb-10 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-8"
+        >
           <a
             href="https://linkedin.com/in/shivang-raval"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-brand-primary"
+            className="inline-flex min-h-11 items-center gap-2.5 rounded-full px-3 text-[0.9375rem] text-ink-secondary transition-colors duration-200 hover:text-brand-primary"
           >
-            <Linkedin size={20} /> linkedin.com/in/shivang-raval
+            <Linkedin size={18} strokeWidth={1.75} aria-hidden="true" /> linkedin.com/in/shivang-raval
           </a>
           <a
             href="https://github.com/shivangraval50"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-ink-secondary transition-colors hover:text-brand-primary"
+            className="inline-flex min-h-11 items-center gap-2.5 rounded-full px-3 text-[0.9375rem] text-ink-secondary transition-colors duration-200 hover:text-brand-primary"
           >
-            <Github size={20} /> github.com/shivangraval50
+            <Github size={18} strokeWidth={1.75} aria-hidden="true" /> github.com/shivangraval50
           </a>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="space-y-2 font-mono text-sm text-ink-tertiary">
+        <motion.div variants={fadeUp} className="space-y-1.5 text-[0.9375rem] text-ink-tertiary">
           <p className="flex items-center justify-center gap-2">
-            <MapPin size={14} /> Boston, MA
+            <MapPin size={15} strokeWidth={1.75} aria-hidden="true" /> Boston, MA
           </p>
           <p>Currently: MS CS @ Northeastern University</p>
           <p className="pt-2 text-ink-secondary">
