@@ -211,7 +211,7 @@ export default function StatArbPlayground() {
           </div>
 
           <div>
-            <div className="mb-1.5 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+            <div className="mb-1.5 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
               Simulated equity curve
             </div>
             <svg viewBox={`0 0 ${SPARK_W} ${SPARK_H}`} className="h-24 w-full" preserveAspectRatio="none">

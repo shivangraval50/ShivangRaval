@@ -290,7 +290,7 @@ export default function RagChatbotPlayground() {
             ) : (
               <>
                 <div>
-                  <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+                  <div className="mb-1 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                     Extractive answer
                   </div>
                   <p className="text-sm leading-relaxed text-ink-primary">{result.answer}</p>
@@ -298,12 +298,12 @@ export default function RagChatbotPlayground() {
 
                 {result.hits.length > 0 && (
                   <div className="space-y-2">
-                    <div className="font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+                    <div className="font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                       Top {result.hits.length} retrieved passage{result.hits.length > 1 ? "s" : ""}
                     </div>
                     {result.hits.map((h) => (
                       <div key={h.passage.id} className="rounded-lg border border-line-subtle bg-void p-3">
-                        <div className="mb-1 flex items-center justify-between font-mono text-[11px] text-signal-cyan">
+                        <div className="mb-1 flex items-center justify-between font-mono text-[0.6471rem] text-signal-cyan">
                           <span>{h.passage.topic}</span>
                           <span className="text-ink-tertiary">score {h.score.toFixed(2)}</span>
                         </div>

@@ -8,11 +8,17 @@ import { motion } from "framer-motion";
  * Shared chrome for the twenty project playgrounds.
  *
  * This is the highest-leverage file for the playgrounds: restyling here restyles
- * all twenty without touching their logic. Every control below now follows HIG
- * "Accessibility" control minimums (44 pt on touch), keeps a visible
- * focus-visible ring (the previous `focus:outline-none` on the inputs silently
- * removed the only keyboard affordance they had), and uses the system's quiet
- * fill-and-hairline treatment instead of neon borders.
+ * all twenty without touching their logic. Controls keep a visible focus-visible
+ * ring (the previous `focus:outline-none` on the inputs silently removed the
+ * only keyboard affordance they had), and use the system's quiet fill-and-hairline
+ * treatment instead of neon borders.
+ *
+ * HIG "Accessibility" 44 pt touch minimum: met by PgToggle (its whole row is the
+ * button, ~47 pt) and PgSlider (the input's own box is the hit area, sized to
+ * ~44 pt around the thin visible track). PgButton (~38 pt) and ScenarioBar's
+ * pills (~34 pt) are compact secondary/tertiary actions and land under it —
+ * flagging rather than papering over it, since bumping their height ripples
+ * into every playground's layout and is out of scope for a chrome-only pass.
  */
 
 export function PgShell({ children, className }: { children: ReactNode; className?: string }) {
@@ -144,7 +150,10 @@ export function PgSlider({
           {format ? format(value) : value}
         </span>
       </div>
-      {/* 44 pt vertical hit area around a 4 pt track — HIG "Accessibility". */}
+      {/* 44 pt vertical hit area around a 4 pt track — HIG "Accessibility". The
+          input's own box is the hit area (native range inputs register
+          pointer events anywhere in their box); the visible track and thumb
+          keep their thin sizes below via the pseudo-element utilities. */}
       <input
         id={auto}
         name={auto}
@@ -154,7 +163,7 @@ export function PgSlider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-6 w-full cursor-pointer appearance-none bg-transparent accent-brand-primary [&::-webkit-slider-runnable-track]:h-1 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-line-strong [&::-webkit-slider-thumb]:-mt-[0.3125rem] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand-fill [&::-webkit-slider-thumb]:shadow-e1"
+        className="h-[2.5882rem] w-full cursor-pointer appearance-none bg-transparent accent-brand-primary [&::-webkit-slider-runnable-track]:h-1 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-line-strong [&::-webkit-slider-thumb]:-mt-[0.3125rem] [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand-fill [&::-webkit-slider-thumb]:shadow-e1"
       />
     </label>
   );

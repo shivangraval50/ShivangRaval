@@ -188,7 +188,7 @@ export default function OrderBookPlayground() {
           />
           <button
             onClick={resetBook}
-            className="font-mono text-[11px] text-ink-tertiary underline decoration-dotted underline-offset-2 hover:text-ink-secondary"
+            className="font-mono text-[0.6471rem] text-ink-tertiary underline decoration-dotted underline-offset-2 hover:text-ink-secondary"
           >
             clear book
           </button>
@@ -205,7 +205,7 @@ export default function OrderBookPlayground() {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <div className="mb-1.5 flex justify-between font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+              <div className="mb-1.5 flex justify-between font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                 <span>Bids</span>
                 <span>Px · Qty · ID</span>
               </div>
@@ -233,7 +233,7 @@ export default function OrderBookPlayground() {
             </div>
 
             <div>
-              <div className="mb-1.5 flex justify-between font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+              <div className="mb-1.5 flex justify-between font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                 <span>Asks</span>
                 <span>Px · Qty · ID</span>
               </div>
@@ -262,7 +262,7 @@ export default function OrderBookPlayground() {
           </div>
 
           <div>
-            <div className="mb-1.5 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">Trade Tape</div>
+            <div className="mb-1.5 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">Trade Tape</div>
             <div className="max-h-40 space-y-1 overflow-y-auto">
               {engine.trades.length === 0 && <div className="font-mono text-xs text-ink-tertiary">no trades yet</div>}
               <AnimatePresence initial={false}>

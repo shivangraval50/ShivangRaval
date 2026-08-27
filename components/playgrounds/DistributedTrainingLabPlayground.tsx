@@ -143,9 +143,14 @@ function DdpDiagram({ ranks, stepId }: { ranks: number; stepId: number }) {
                 syncing ? "border-signal-cyan" : "border-line-subtle"
               }`}
             >
-              <div className="font-mono text-[11px] text-ink-tertiary">Rank {i}</div>
+              <div className="font-mono text-[0.6471rem] text-ink-tertiary">Rank {i}</div>
               <div className="mt-1 font-mono text-sm font-semibold text-signal-cyan">100%</div>
-              <div className="font-mono text-[10px] text-ink-tertiary">of params (full replica)</div>
+              {/* Kept at the pre-restyle 10px (not raised to the 11px floor): at
+                  ranks=7-8 this grid column narrows below the caption's content
+                  width regardless of font size (the untouched text-xs "layers
+                  N-M" line above overflows identically), so raising this one
+                  value doesn't fix anything and only makes the overflow worse. */}
+              <div className="font-mono text-[0.5882rem] text-ink-tertiary">of params (full replica)</div>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -166,7 +171,7 @@ function DdpDiagram({ ranks, stepId }: { ranks: number; stepId: number }) {
         </AnimatePresence>
       </div>
 
-      <p className="text-center font-mono text-[11px] text-signal-cyan">
+      <p className="text-center font-mono text-[0.6471rem] text-signal-cyan">
         {syncing ? "⇄ all-reduce gradients across all ranks" : "click Step to run all-reduce on the gradients"}
       </p>
     </div>
@@ -205,9 +210,11 @@ function FsdpDiagram({ ranks, stepId }: { ranks: number; stepId: number }) {
                 phase !== "idle" ? "border-signal-green" : "border-line-subtle"
               }`}
             >
-              <div className="font-mono text-[11px] text-ink-tertiary">Rank {i}</div>
+              <div className="font-mono text-[0.6471rem] text-ink-tertiary">Rank {i}</div>
               <div className="mt-1 font-mono text-sm font-semibold text-signal-green">{pctLabel}</div>
-              <div className="font-mono text-[10px] text-ink-tertiary">of params (shard {i})</div>
+              {/* Kept at the pre-restyle 10px — same narrow-column overflow at
+                  ranks=7-8 as the DDP card's caption above; see that comment. */}
+              <div className="font-mono text-[0.5882rem] text-ink-tertiary">of params (shard {i})</div>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -228,7 +235,7 @@ function FsdpDiagram({ ranks, stepId }: { ranks: number; stepId: number }) {
         </AnimatePresence>
       </div>
 
-      <p className="text-center font-mono text-[11px] text-signal-green">
+      <p className="text-center font-mono text-[0.6471rem] text-signal-green">
         {phase === "gather" && "→ all-gather full params for this step"}
         {phase === "scatter" && "← reduce-scatter gradients back to shards"}
         {phase === "idle" && "click Step to run a forward + backward step"}
@@ -260,7 +267,7 @@ function TensorParallelDiagram({ ranks, stepId }: { ranks: number; stepId: numbe
   return (
     <div className="space-y-4">
       <div>
-        <div className="mb-2 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+        <div className="mb-2 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
           Weight matrix ({MATRIX_SIZE}×{MATRIX_SIZE}) — column-parallel across {ranks} ranks
         </div>
         <motion.div
@@ -303,11 +310,13 @@ function TensorParallelDiagram({ ranks, stepId }: { ranks: number; stepId: numbe
                 className="mx-auto mb-1 h-1.5 w-6 rounded-full bg-signal-violet"
                 style={{ opacity: groupShade(i, ranks) }}
               />
-              <div className="font-mono text-[11px] text-ink-tertiary">Rank {i}</div>
+              <div className="font-mono text-[0.6471rem] text-ink-tertiary">Rank {i}</div>
               <div className="mt-1 font-mono text-xs font-semibold text-signal-violet">
                 cols {g.start}–{g.end}
               </div>
-              <div className="font-mono text-[10px] text-ink-tertiary">
+              {/* Kept at the pre-restyle 10px — same narrow-column overflow at
+                  ranks=7-8 as the DDP card's caption; see that comment above. */}
+              <div className="font-mono text-[0.5882rem] text-ink-tertiary">
                 {g.size} of {MATRIX_SIZE} columns
               </div>
             </motion.div>
@@ -330,7 +339,7 @@ function TensorParallelDiagram({ ranks, stepId }: { ranks: number; stepId: numbe
         </AnimatePresence>
       </div>
 
-      <p className="text-center font-mono text-[11px] text-signal-violet">
+      <p className="text-center font-mono text-[0.6471rem] text-signal-violet">
         {phase === "compute" && "local matmul on each rank's own column slice"}
         {phase === "gather" && "→ all-gather partial outputs into the full activation"}
         {phase === "idle" && "click Step to run a forward pass"}
@@ -357,7 +366,7 @@ function PipelineParallelDiagram({ ranks, stepId }: { ranks: number; stepId: num
 
   return (
     <div className="space-y-4">
-      <div className="mb-1 font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+      <div className="mb-1 font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
         {ranks} sequential stages — {TOTAL_LAYERS} layers split contiguously
       </div>
       <div className="relative">
@@ -374,11 +383,13 @@ function PipelineParallelDiagram({ ranks, stepId }: { ranks: number; stepId: num
                   tokenStage === i ? "border-signal-amber" : "border-line-subtle"
                 }`}
               >
-                <div className="font-mono text-[11px] text-ink-tertiary">Stage {i}</div>
+                <div className="font-mono text-[0.6471rem] text-ink-tertiary">Stage {i}</div>
                 <div className="mt-1 font-mono text-xs font-semibold text-signal-amber">
                   layers {s.start}–{s.end}
                 </div>
-                <div className="font-mono text-[10px] text-ink-tertiary">
+                {/* Kept at the pre-restyle 10px — same narrow-column overflow at
+                    ranks=7-8 as the DDP card's caption; see that comment above. */}
+                <div className="font-mono text-[0.5882rem] text-ink-tertiary">
                   {s.size} layer{s.size > 1 ? "s" : ""}
                 </div>
               </motion.div>
@@ -396,7 +407,7 @@ function PipelineParallelDiagram({ ranks, stepId }: { ranks: number; stepId: num
         )}
       </div>
 
-      <p className="text-center font-mono text-[11px] text-signal-amber">
+      <p className="text-center font-mono text-[0.6471rem] text-signal-amber">
         {tokenStage >= 0
           ? `micro-batch flowing through stage ${tokenStage}`
           : "click Step to send a micro-batch through the pipeline"}

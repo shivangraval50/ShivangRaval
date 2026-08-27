@@ -165,7 +165,7 @@ export default function LLMInferenceEnginePlayground() {
 
           <div className="space-y-3">
             <div>
-              <div className="mb-1 flex justify-between font-mono text-[11px] text-ink-tertiary">
+              <div className="mb-1 flex justify-between font-mono text-[0.6471rem] text-ink-tertiary">
                 <span>Baseline</span>
                 <span>{baselineMs.toFixed(0)}ms</span>
               </div>
@@ -178,7 +178,7 @@ export default function LLMInferenceEnginePlayground() {
               </div>
             </div>
             <div>
-              <div className="mb-1 flex justify-between font-mono text-[11px] text-ink-tertiary">
+              <div className="mb-1 flex justify-between font-mono text-[0.6471rem] text-ink-tertiary">
                 <span>With selected techniques</span>
                 <span className={TONE_TEXT[tone]}>{resultMs.toFixed(1)}ms</span>
               </div>
@@ -193,7 +193,7 @@ export default function LLMInferenceEnginePlayground() {
           </div>
 
           <div className="space-y-2 border-t border-line-subtle pt-4">
-            <div className="font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+            <div className="font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
               {activeTechniques.length === 0
                 ? "No techniques active — pure baseline"
                 : `${activeTechniques.length} technique${activeTechniques.length > 1 ? "s" : ""} applied`}
@@ -207,7 +207,7 @@ export default function LLMInferenceEnginePlayground() {
                   >
                     <div>
                       <div className="font-mono text-xs text-ink-primary">{t.short}</div>
-                      <div className="text-[11px] text-ink-tertiary">{t.note}</div>
+                      <div className="text-[0.6471rem] text-ink-tertiary">{t.note}</div>
                     </div>
                     <div
                       className={`font-mono text-xs ${t.kind === "speedup" ? "text-signal-green" : "text-signal-red"}`}

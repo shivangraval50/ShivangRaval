@@ -149,7 +149,7 @@ export default function LowLatencyExecPlayground() {
             />
             <PgButton onClick={() => scan(depth)}>Scan for best price ▸</PgButton>
           </div>
-          <p className="font-mono text-[11px] text-ink-tertiary">
+          <p className="font-mono text-[0.6471rem] text-ink-tertiary">
             Each click generates a brand-new random ask ladder at this depth (min fill size {MIN_FILL_SIZE} shares),
             then times {result.trials.toLocaleString()} repeated scans of it with <code>performance.now()</code>.
           </p>
@@ -182,7 +182,7 @@ export default function LowLatencyExecPlayground() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="border-t border-line-subtle pt-3 font-mono text-[11px] text-ink-tertiary">
+          <div className="border-t border-line-subtle pt-3 font-mono text-[0.6471rem] text-ink-tertiary">
             {result.matched
               ? "✓ both algorithms agree on the best price — correctness holds at this depth."
               : "⚠ algorithms disagreed on this run — unexpected, re-scan to check."}

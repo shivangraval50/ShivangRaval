@@ -98,7 +98,7 @@ export default function StreamingPipelinePlayground() {
             Re-run tick simulation ▸
           </PgButton>
 
-          <p className="font-mono text-[11px] text-ink-tertiary">
+          <p className="font-mono text-[0.6471rem] text-ink-tertiary">
             Topic has {TOTAL_PARTITIONS} partitions total. A message can only be consumed by whichever single
             instance owns its partition — adding more instances than active partitions leaves the extras idle.
           </p>
@@ -135,14 +135,14 @@ export default function StreamingPipelinePlayground() {
               </div>
 
               <div className="space-y-2 border-t border-line-subtle pt-3">
-                <div className="font-mono text-[11px] uppercase tracking-wide text-ink-tertiary">
+                <div className="font-mono text-[0.6471rem] uppercase tracking-wide text-ink-tertiary">
                   Per-consumer load
                 </div>
                 {sim.perConsumer.map((load, i) => {
                   const pct = Math.min(100, (load / BASE_EVENTS_PER_SEC) * 100);
                   return (
                     <div key={i} className="flex items-center gap-2">
-                      <span className="w-14 shrink-0 font-mono text-[11px] text-ink-tertiary">consumer-{i}</span>
+                      <span className="w-14 shrink-0 font-mono text-[0.6471rem] text-ink-tertiary">consumer-{i}</span>
                       <div className="h-3 flex-1 overflow-hidden rounded-full bg-void">
                         <motion.div
                           className={`h-full rounded-full ${pct > 5 ? "bg-signal-cyan" : "bg-line-strong"}`}
@@ -151,7 +151,7 @@ export default function StreamingPipelinePlayground() {
                           transition={{ duration: 0.35 }}
                         />
                       </div>
-                      <span className="w-20 shrink-0 text-right font-mono text-[11px] text-ink-secondary">
+                      <span className="w-20 shrink-0 text-right font-mono text-[0.6471rem] text-ink-secondary">
                         {Math.round(load).toLocaleString()}/s
                       </span>
                     </div>
