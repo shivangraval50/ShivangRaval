@@ -432,21 +432,22 @@ export const PROJECTS: Project[] = [
     category: "systems",
     tech: ["TypeScript", "Cloudflare Durable Objects", "Next.js 16", "Neon Postgres", "Zustand", "Playwright"],
     metrics: [
-      { label: "Test Suite", value: "369 tests / 40 files", status: "measured" },
+      { label: "Test Suite", value: "398 tests / 40 files", status: "measured" },
       { label: "Deployment", value: "not deployed yet", status: "stubbed" },
     ],
     demo: {
       kind: "metrics",
       metrics: [
-        { label: "Vitest Suite", value: "369 tests / 40 files", status: "measured" },
+        { label: "Vitest Suite", value: "398 tests / 40 files", status: "measured" },
         { label: "Two-Browser Race Test", value: "3/3 Playwright passing", status: "measured" },
         { label: "fast-check Properties", value: "8 on the auction rules", status: "measured" },
-        { label: "Live Deployment", value: "no hosted URL yet", status: "stubbed" },
+        { label: "Live Deployment", value: "Cloudflare + Vercel", status: "measured" },
       ],
     },
     accuracyNote:
-      "Not deployed — there is no live URL, because every deploy step needs a Cloudflare/Neon/Vercel credential that hasn't been supplied, so DEPLOY.md is a runbook that has never been executed. Every number here is from a local run: 369 tests across 40 files (vitest) and 3/3 Playwright end-to-end tests, both re-run here rather than taken on trust. On the headline claim, the repo hedges it correctly and so should this card: a Durable Object yields at every await, so \"single-threaded\" alone would guarantee nothing. The ordering property comes from one specific block — read state, validateBid, append, broadcast — containing no await at all, which is a property of that code, not of the platform. The playground here runs a hand port of the real packages/auction-core rules; the network, the DO's one-at-a-time delivery and the alarm clock are simulated in the browser.",
+      "Deployed and reachable: the Durable Object Worker runs on Cloudflare, the App Router front end on Vercel, and the room page server-renders its snapshot through the Worker. Three things are deliberately not configured yet, and the app degrades rather than breaking: with no Neon database the leaderboard and replay read empty, with no GitHub OAuth app sign-in is unavailable (guests can still bid, which is the design), and with no Gemini key the bot commentary is silent. Every number here is from a local run: 398 tests across 40 files (vitest) and 3/3 Playwright end-to-end tests, both re-run here rather than taken on trust. On the headline claim, the repo hedges it correctly and so should this card: a Durable Object yields at every await, so \"single-threaded\" alone would guarantee nothing. The ordering property comes from one specific block — read state, validateBid, append, broadcast — containing no await at all, which is a property of that code, not of the platform. The playground here runs a hand port of the real packages/auction-core rules; the network, the DO's one-at-a-time delivery and the alarm clock are simulated in the browser.",
     github: "https://github.com/shivangraval50/openbid",
+    homepage: "https://openbid-zeta.vercel.app",
     featured: true,
   },
 
