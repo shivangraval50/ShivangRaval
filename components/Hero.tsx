@@ -63,7 +63,12 @@ export default function Hero() {
               variants={fadeUp}
               className="mx-auto mb-5 max-w-[30rem] text-[1.1875rem] leading-[1.4] tracking-title text-ink-secondary sm:text-[1.3125rem] lg:mx-0"
             >
-              Twenty real systems you can{" "}
+              {/* Derived, not spelled out: this line read "Twenty real
+                  systems" while PROJECTS held 21, because adding a project
+                  silently falsified prose that no count referenced. Every
+                  other place the total appears (the CTA below, the grid
+                  filters, the ticker, the stats) already derives it. */}
+              {PROJECTS.length} real systems you can{" "}
               <span className="text-brand-primary">run yourself</span> — not slides, not screenshots, not
               scripted demos.
             </motion.p>
