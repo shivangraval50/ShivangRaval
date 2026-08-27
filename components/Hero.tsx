@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import { fadeUp, staggerContainer, EASE, DUR } from "@/lib/motion";
+import { PROJECTS } from "@/data/projects";
 
 const ROLES = ["AI/ML Engineer", "Quant Researcher", "Systems Programmer", "MS CS @ Northeastern"];
 
@@ -109,7 +110,7 @@ export default function Hero() {
                 href="#projects"
                 className="inline-flex min-h-11 items-center rounded-full bg-brand-fill px-6 text-[1.0625rem] font-medium text-brand-onfill transition-opacity duration-200 hover:opacity-90"
               >
-                View 20 Projects
+                View {PROJECTS.length} Projects
               </MagneticButton>
               <MagneticButton
                 href="/Shivang_Raval_Resume.pdf"

@@ -42,3 +42,4 @@ next-env.d.ts
 
 # restyle working notes (not part of the site)
 .restyle-report.md
+.openbid-entry-report.md

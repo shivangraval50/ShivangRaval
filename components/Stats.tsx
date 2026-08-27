@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import AnimatedCounter from "./AnimatedCounter";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
+import { PROJECTS } from "@/data/projects";
 
 const STATS = [
-  { value: 20, suffix: "", label: "Projects Shipped" },
+  // Derived, so adding a project can't leave this claim stale.
+  { value: PROJECTS.length, suffix: "", label: "Projects Shipped" },
   { value: 149, suffix: "K", label: "Matched Events / Sec" },
   { value: 2.95, decimals: 2, suffix: "×", label: "Measured Training Speedup" },
   { value: 10, prefix: "<", suffix: "ms", label: "Cached RAG Latency" },

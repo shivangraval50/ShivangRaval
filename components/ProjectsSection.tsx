@@ -23,14 +23,15 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
           className="mb-12 max-w-[42rem]"
         >
           <p className="eyebrow mb-3">
-            <span className="text-ink-tertiary">$</span> ls ./projects --count=20
+            <span className="text-ink-tertiary">$</span> ls ./projects --count={projects.length}
           </p>
           <h2 className="mb-4 text-[2rem] font-semibold tracking-title text-ink-primary sm:text-[2.5rem]">
             Featured Work
           </h2>
           <p className="text-[1.0625rem] leading-relaxed text-ink-secondary">
-            From quantitative trading systems to distributed ML infrastructure — 20 projects,
-            each with a real, working playground you can test yourself, not just a screenshot.
+            From quantitative trading systems to distributed ML infrastructure — {projects.length}{" "}
+            projects, each with a real, working playground you can test yourself, not just a
+            screenshot.
           </p>
         </motion.div>
 
