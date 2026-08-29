@@ -21,6 +21,7 @@ export const PLAYGROUNDS: Record<string, ComponentType> = {
   "lowlatency-exec-core": dynamic(() => import("./LowLatencyExecPlayground"), { loading, ssr: false }),
   "streaming-data-pipeline": dynamic(() => import("./StreamingPipelinePlayground"), { loading, ssr: false }),
   "openbid": dynamic(() => import("./OpenBidPlayground"), { loading, ssr: false }),
+  "diffsync": dynamic(() => import("./DiffSyncPlayground"), { loading, ssr: false }),
   "llm-inference-engine": dynamic(() => import("./LLMInferenceEnginePlayground"), { loading, ssr: false }),
   "distributed-training-lab": dynamic(() => import("./DistributedTrainingLabPlayground"), { loading, ssr: false }),
   "distributed-ml-training": dynamic(() => import("./DistributedMLTrainingPlayground"), { loading, ssr: false }),

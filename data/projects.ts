@@ -450,6 +450,41 @@ export const PROJECTS: Project[] = [
     homepage: "https://openbid-zeta.vercel.app",
     featured: true,
   },
+  {
+    id: "diffsync",
+    title: "diffsync",
+    pitch:
+      "Several reviewers on one pull request, where a comment anchored to line 15 either follows its code to line 18 or says out loud that it is outdated — never a guess in between.",
+    description:
+      "A live code-review surface — presence, threaded comments anchored to diff lines, one Cloudflare Durable Object per pull request as the sole authority over an append-only log. The hard part isn't the real-time layer, which is serialised by construction; it's that lines move. The failure that matters is a thread quietly re-pointing at different code, so two reviewers argue about code nobody wrote — which is why relocation is a total pure function with exactly two outcomes, located or outdated, and five rules that would each rather lose a thread's position than guess at it.",
+    category: "systems",
+    tech: [
+      "TypeScript",
+      "Cloudflare Durable Objects",
+      "Next.js 16",
+      "fast-check",
+      "Playwright",
+      "Neon Postgres",
+    ],
+    metrics: [
+      { label: "Test Suite", value: "335 tests / 39 files", status: "measured" },
+      { label: "Property Cases", value: "2,350 fast-check runs", status: "measured" },
+    ],
+    demo: {
+      kind: "metrics",
+      metrics: [
+        { label: "Vitest Suite", value: "335 tests / 39 files", status: "measured" },
+        { label: "fast-check Cases", value: "2,350 across 11 properties", status: "measured" },
+        { label: "Force-Push E2E", value: "4 Playwright / 2 specs", status: "measured" },
+        { label: "Relocation Outcomes", value: "located or outdated", status: "measured" },
+      ],
+    },
+    accuracyNote:
+      "Deployed and reachable: the App Router front end is on Vercel and the pull-request Durable Object on Cloudflare, and the sample pull request server-renders its parsed diff through the Worker — checked here, not taken on trust. Three things are deliberately not configured, and the app degrades rather than breaking: with no Neon database the archive and the \"recently reviewed\" list read empty, with no GitHub OAuth app there is no sign-in control at all and everyone reviews as a guest (which is the design), and with no LLM key the AI summary panel is silent — that silence is itself a test. On the numbers: 335 tests across 39 files is a local `npm test` run re-run here rather than quoted (the repo's README says 333, which is now two behind its own suite); 2,350 is the sum of the `numRuns` on the 11 fast-check properties in packages/anchor; the 4 Playwright tests in 2 spec files were counted in the repo and read, not re-run here, since they need a wrangler worker and a Next server up at once. Two honest limits the repo records as tests rather than hiding: a long enough duplicated block, fully visible in both places, still relocates to whichever copy the scan sees — content-based anchoring cannot close that without identity-based anchoring — and the distinctiveness threshold makes anchors near a file's edges report outdated more readily than a human would, which is the safe direction but a real cost. The upstream UI is deliberately unstyled semantic HTML; the styling you see in the playground here is this site's, not the app's. The playground runs a hand port of the real packages/anchor, diff parser and thread placement; the blob sha is derived from the rendered lines rather than being git's SHA-1, and there is no server, socket or second reviewer in the tab.",
+    github: "https://github.com/shivangraval50/diffsync",
+    homepage: "https://diffsync-shivangraval50-5211s-projects.vercel.app",
+    featured: true,
+  },
 
   // ---------- Applied Apps ----------
   {
