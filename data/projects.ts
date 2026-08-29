@@ -485,6 +485,40 @@ export const PROJECTS: Project[] = [
     homepage: "https://diffsync-shivangraval50-5211s-projects.vercel.app",
     featured: true,
   },
+  {
+    id: "rag-console",
+    title: "rag-console",
+    pitch:
+      "Retrieval-augmented answering over 23 repositories where a question the corpus cannot answer gets a refusal with its evidence, not a fluent guess \u2014 and no model call at all.",
+    description:
+      "A RAG console instrumented end to end: every answer shows the passages it used, what each scored, what the query cost, and how long each stage took. The pipeline isn't the hard part \u2014 chunk, embed, retrieve, generate is well-trodden. The failure that matters is a confident answer built on retrieval that found nothing relevant, in prose indistinguishable from a grounded one, so the confidence threshold is an explicit parameter to a pure function rather than a constant buried in the pipeline, its values were fitted against a labelled query set instead of chosen, and the passages that just missed the cut are kept and shown \u2014 because a reader can only catch a bad answer they can see the evidence for.",
+    category: "ai-infra",
+    tech: [
+      "TypeScript",
+      "Next.js 16",
+      "Cloudflare Durable Objects",
+      "Workers AI",
+      "Neon pgvector",
+      "Playwright",
+    ],
+    metrics: [
+      { label: "Test Suite", value: "310 tests / 32 files", status: "measured" },
+      { label: "Corpus", value: "1,117 chunks / 23 repos", status: "measured" },
+    ],
+    demo: {
+      kind: "metrics",
+      metrics: [
+        { label: "Vitest Suite", value: "310 tests / 32 files", status: "measured" },
+        { label: "Snapshot", value: "160 docs / 1,117 chunks", status: "measured" },
+        { label: "Calibrated Floor", value: "0.563 top / 0.025 margin", status: "measured" },
+        { label: "Refusal E2E", value: "2 Playwright / 2 specs", status: "measured" },
+      ],
+    },
+    accuracyNote:
+      "Not deployed at the time of writing: the code is complete and the runbook in DEPLOY.md is written, but the Worker, Vercel project and Neon database need accounts I do not hold, so there is no live URL to link and the homepage field is omitted rather than pointed somewhere hopeful. On the numbers: 310 tests across 32 files and 2 Playwright specs are a local run, and the repository's README is checked against the source by scripts/check-docs.mjs in CI \u2014 which re-derives the test count, the thresholds, the policy version and the corpus counts and fails the build on a mismatch, because both sibling projects here shipped a README that was true when written and false by merge. The thresholds (0.563 minimum top score, 0.025 margin over the mean) were fitted against a labelled set of 23 queries, and a test fails if either is edited without re-running that sweep. Four honest limits the repo records rather than hides: the corpus is a pinned snapshot and not a live index, so anything changed after each repository's recorded commit is invisible; the threshold is calibrated against a finite labelled set, so a query unlike anything in it can land on the wrong side \u2014 which is exactly why the near-misses are always shown; retrieval is embedding similarity only, with no reranker and no keyword search, so a question phrased far from the source text can miss; and nothing programmatically verifies that a generated sentence actually follows from the passage it cites \u2014 the model is instructed to use only the supplied passages and the passages are shown, but the checking is the reader's. The playground here runs a hand port of the real packages/core: the four questions and every cosine score beside a passage come from the actual 1,117-chunk snapshot, so the retrieval is a recording, while the verdict is computed live by the ported decideRetrieval on every slider move. Nothing is embedded in the browser and no model is called.",
+    github: "https://github.com/shivangraval50/rag-console",
+    featured: true,
+  },
 
   // ---------- Applied Apps ----------
   {
